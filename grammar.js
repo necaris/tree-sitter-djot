@@ -15,7 +15,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.list, $.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -130,6 +130,46 @@ module.exports = grammar({
       "]",
       /[ \t]+/
     )),
+
+    // AIDEV-NOTE: Pipe tables use | to separate cells
+    // Separator lines determine headers and alignment with ---
+    pipe_table: ($) => prec(1, seq(
+      repeat1(choice(
+        $.pipe_table_row,
+        $.pipe_table_delimiter_row
+      )),
+      optional(seq(optional("\n"), $.table_caption)),
+      "\n"
+    )),
+    
+    pipe_table_row: ($) => token(seq(
+      "|",
+      repeat1(seq(
+        /[^\|\n]*/,
+        "|"
+      )),
+      "\n"
+    )),
+    
+    pipe_table_delimiter_row: (_) => token(prec(2, seq(
+      "|",
+      repeat1(seq(
+        optional(/[ \t]*/),
+        optional(":"),
+        repeat1("-"),
+        optional(":"),
+        optional(/[ \t]*/),
+        "|"
+      )),
+      "\n"
+    ))),
+    
+    table_caption: ($) => seq(
+      "^",
+      /[ \t]+/,
+      alias(/[^\n]+/, $.caption_text),
+      "\n"
+    ),
 
     // AIDEV-NOTE: Block quotes use > markers with optional space
     // Supports nested blocks and lazy continuation (omitting > on continuation lines)
