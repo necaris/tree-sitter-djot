@@ -86,3 +86,188 @@ let x = 2;
     (code)
     (code_block_marker)))
 
+===============================================================================
+Attributes: ID only
+===============================================================================
+:::{#myid}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_id))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Class only
+===============================================================================
+:::{.myclass}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_class))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Multiple classes
+===============================================================================
+:::{.class1 .class2 .class3}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_class)
+      (attribute_class)
+      (attribute_class))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: ID and class
+===============================================================================
+:::{#myid .myclass}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_id)
+      (attribute_class))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Key-value unquoted
+===============================================================================
+:::{key=value}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_unquoted)))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Key-value double quoted
+===============================================================================
+:::{key="value with spaces"}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_quoted)))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Key-value single quoted
+===============================================================================
+:::{key='value with spaces'}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_quoted)))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: Mixed
+===============================================================================
+:::{#myid .class1 .class2 key1=value1 key2="value 2"}
+Content
+:::
+
+-------------------------------------------------------------------------------
+
+(document
+  (div
+    (div_marker)
+    (attributes
+      (attribute_id)
+      (attribute_class)
+      (attribute_class)
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_unquoted))
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_quoted)))
+    (paragraph)
+    (div_marker)))
+
+===============================================================================
+Attributes: On code block
+===============================================================================
+```python{.highlight}
+print("hello")
+```
+
+-------------------------------------------------------------------------------
+
+(document
+  (code_block
+    (code_block_marker)
+    (language)
+    (attributes
+      (attribute_class))
+    (code)
+    (code_block_marker)))
+
+===============================================================================
+Attributes: On emphasis
+===============================================================================
+This is _emphasized_{.highlight} text
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (emphasis
+      (attributes
+        (attribute_class)))))
+

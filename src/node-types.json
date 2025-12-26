@@ -1,5 +1,61 @@
 [
   {
+    "type": "attribute_class",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "attribute_id",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "attribute_key_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_key",
+          "named": true
+        },
+        {
+          "type": "attribute_value_quoted",
+          "named": true
+        },
+        {
+          "type": "attribute_value_unquoted",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_class",
+          "named": true
+        },
+        {
+          "type": "attribute_id",
+          "named": true
+        },
+        {
+          "type": "attribute_key_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "code",
     "named": true,
     "fields": {}
@@ -12,6 +68,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
         {
           "type": "code",
           "named": true
@@ -35,6 +95,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
         {
           "type": "code_block",
           "named": true
@@ -86,6 +150,10 @@
       "required": false,
       "types": [
         {
+          "type": "attributes",
+          "named": true
+        },
+        {
           "type": "emphasis",
           "named": true
         }
@@ -112,8 +180,32 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
     "type": "_",
     "named": false
+  },
+  {
+    "type": "attribute_key",
+    "named": true
+  },
+  {
+    "type": "attribute_value_quoted",
+    "named": true
+  },
+  {
+    "type": "attribute_value_unquoted",
+    "named": true
   },
   {
     "type": "code_block_marker",
@@ -126,5 +218,13 @@
   {
     "type": "language",
     "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
   }
 ]
