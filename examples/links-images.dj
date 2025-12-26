@@ -1,0 +1,69 @@
+# Links and Images
+
+## Inline Links
+
+A simple link: [Visit Example](https://example.com)
+
+Link with formatting: [_Emphasized_ link text](https://example.com)
+
+Link with path: [Example Site](https://example.com/page)
+
+## Reference Links
+
+You can define references separately for cleaner text.
+
+First define the reference:
+
+[example]: https://example.com
+
+Then use it: [Click here][example] for the example site.
+
+## Autolinks
+
+Direct URLs: <https://example.com>
+
+Email addresses: <user@example.com>
+
+## Images
+
+### Inline Images
+
+![Alt text](image.jpg)
+
+![Logo](logo.png)
+
+### Reference Images
+
+![Profile Picture][profile]
+
+![Avatar][]
+
+[profile]: profile.jpg
+[Avatar]: avatar.png
+
+## Links with Attributes
+
+Add IDs, classes, or custom attributes to links:
+
+[Example Link](https://example.com){#main-link .external}
+
+## Combining Links and Images
+
+Clickable image (link with image as text):
+
+[![Alt text](thumbnail.jpg)](full-image.jpg)
+
+## Footnote References
+
+Basic text with a footnote reference[^1].
+
+Another footnote[^note] can have any label.
+
+[^1]: This is the footnote content.
+[^note]: This is another footnote with a custom label.
+
+## Symbols
+
+You can use emoji-style symbols: :smile: :heart: :rocket:
+
+Custom symbols: :arrow_right: :warning: :check_mark:

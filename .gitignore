@@ -5,6 +5,16 @@ node_modules
 build
 *.log
 /test.js
-/examples/npm
-package-lock.json
 /target/
+
+# Temporary test files
+example-file
+test-*.txt
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store

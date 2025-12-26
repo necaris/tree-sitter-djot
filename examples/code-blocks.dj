@@ -1,0 +1,97 @@
+# Code Blocks and Verbatim
+
+## Fenced Code Blocks
+
+Basic code block with language tag:
+
+```python
+def hello_world():
+    print("Hello, World!")
+    return True
+```
+
+JavaScript example:
+
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+### Code Block with Attributes
+
+```rust{.highlight #main-code}
+fn main() {
+    println!("Hello, Rust!");
+}
+```
+
+## Code Blocks Without Language
+
+Sometimes you just want plain text:
+
+```
+Plain text code block
+No syntax highlighting
+Just monospace formatting
+```
+
+## Raw Blocks
+
+Raw blocks pass content through without processing, useful for HTML or LaTeX:
+
+``` =html
+<div class="custom-widget">
+  <span style="color: red;">Custom HTML</span>
+</div>
+```
+
+``` =latex
+\begin{equation}
+  E = mc^2
+\end{equation}
+```
+
+## Inline Code and Verbatim
+
+Simple inline code: `variable_name`
+
+Code with backticks: ``string = `template ${var}` ``
+
+Triple backticks for more nesting: ```code with `` inside```
+
+## Raw Inline
+
+Raw inline passes content for specific formats:
+
+HTML tag: `<span class="red">`{=html}
+
+LaTeX command: `\textbf{bold}`{=latex}
+
+## Escaping Special Characters
+
+Use backslash to escape:
+
+Not \*emphasized\* or \`code\`.
+
+Literal backslash: \\ 
+
+Escape brackets: \[not a link\]
+
+## Comments in Code
+
+Code blocks preserve all content including comments:
+
+```python
+# This is a Python comment
+def example():
+    """Docstring"""
+    pass  # inline comment
+```
+
+Comments in attributes are different (attributes must immediately follow language):
+
+```python{.highlight}
+# Attribute comments work like: {#id % comment % .class}
+print("Code here")
+```

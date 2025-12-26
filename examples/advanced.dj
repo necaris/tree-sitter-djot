@@ -1,0 +1,159 @@
+# Advanced Djot Features
+
+## Mathematics
+
+Inline math: The equation $`E = mc^2` is famous.
+
+Display math for larger expressions:
+
+$$`\int_0^\infty e^{-x^2} dx = \frac{\sqrt{\pi}}{2}`
+
+$$`\sum_{i=1}^n i = \frac{n(n+1)}{2}`
+
+## Footnotes
+
+### Footnote Definitions
+
+[^1]: This is a footnote with inline content.
+
+[^long]: This footnote has a longer explanation that demonstrates
+how footnotes work in Djot.
+
+[^math]: Even math works in footnotes: $`x^2 + y^2 = z^2`
+
+### Using Footnotes
+
+Scientific claims need citations[^1].
+
+Multiple footnotes[^long] can be used[^math] in the same paragraph.
+
+## Pipe Tables
+
+Simple table:
+
+| Name    | Age | City        |
+|---------|-----|-------------|
+| Alice   | 30  | New York    |
+| Bob     | 25  | London      |
+| Charlie | 35  | Tokyo       |
+
+### Table with Alignment
+
+| Left    | Center  | Right   |
+|:--------|:-------:|--------:|
+| Left    | Center  | Right   |
+| aligned | aligned | aligned |
+
+### Table with Caption
+
+| Product | Price |
+|---------|-------|
+| Apple   | $1.00 |
+| Banana  | $0.50 |
+
+^ Fruit Prices (2024)
+
+## Divs (Containers)
+
+Basic div:
+
+:::
+This content is inside a div container.
+:::
+
+### Nested Divs
+
+:::{.outer}
+Outer div content
+
+::::{.inner}
+Inner nested div
+::::
+
+More outer content
+:::
+
+### Div with Attributes
+
+:::{#main-content .container .highlighted}
+Content with ID and multiple classes.
+:::
+
+## Attributes System
+
+### On Headings
+
+# Main Title {#top}
+
+## Section {.important}
+
+### Subsection {#intro .section data-level=3}
+
+### On Inline Elements
+
+This is [special text]{.highlight}.
+
+A [span with ID]{#unique-span}.
+
+[Multiple attributes]{#id .class1 .class2}.
+
+### Comments in Attributes
+
+Attributes can contain comments that won't be visible:
+
+This is [text]{#id % comment here % .class} with attributes.
+
+## Smart Punctuation
+
+Ellipsis: waiting...
+
+Em dash: Used for breaks---like this.
+
+En dash: Pages 10--20.
+
+## Inline Formatting Showcase
+
+### Superscript and Subscript
+
+Chemical formula: H~2~O
+
+Mathematical notation: x^2^ + y^2^
+
+Combined: E = mc^2^ (mass in kg~0~)
+
+### Highlight, Insert, Delete
+
+{=Highlighted text=} stands out.
+
+{+Inserted content+} shows additions.
+
+{-Deleted content-} shows removals.
+
+Track changes: {-old text-} {+new text+}
+
+## Forced Delimiters
+
+When you need explicit control:
+
+{_Forced emphasis opener for edge cases
+
+Forced closer_} here
+
+Similarly for strong: {*forced strong opener
+
+And closer*} works
+
+## Reference Definitions with Attributes
+
+{#main-link .external}
+[example]: https://example.com
+
+Links using [example][] inherit the attributes.
+
+## Complex Combinations
+
+A paragraph with _emphasis_, *strong*, `code`, [link](url), and ![image](img.jpg){.thumb}.
+
+Math: $`x^2`, footnote[^1], and :emoji: symbols work together.
+
+Formatted span: [This has _emphasis_ and *strong*]{.special #formatted}.

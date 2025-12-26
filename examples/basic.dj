@@ -1,0 +1,79 @@
+# Basic Djot Syntax
+
+This document demonstrates the fundamental building blocks of Djot markup.
+
+## Headings
+
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+## Paragraphs
+
+This is a simple paragraph. Paragraphs are separated by blank lines.
+Multiple lines in the same paragraph are joined together.
+
+This is a second paragraph. It's separated from the first by a blank line.
+
+You can have hard line breaks\
+by using a backslash before the newline.
+
+## Emphasis and Strong
+
+This is _emphasized text_ (typically rendered as italic).
+
+This is *strong text* (typically rendered as bold).
+
+You can combine them: _emphasized with *strong inside*_.
+
+## Lists
+
+### Unordered Lists
+
+- First item
+- Second item
+- Third item
+
+### Ordered Lists
+
+1. First numbered item
+2. Second numbered item
+3. Third numbered item
+
+### Task Lists
+
+- [ ] Unchecked task
+- [x] Completed task
+- [ ] Another unchecked task
+
+## Block Quotes
+
+> This is a block quote.
+> It can span multiple lines.
+
+> Block quotes can contain other elements:
+>
+> - Lists
+> - _Emphasis_
+> - And more
+
+## Thematic Breaks
+
+Use three or more dashes or asterisks for a horizontal rule:
+
+---
+
+Content after the break.
+
+***
+
+Another break with asterisks.
+
+## Code
+
+Inline code uses backticks: `let x = 42;`
+
+For code with backticks inside, use double backticks: ``let str = `template`;``
