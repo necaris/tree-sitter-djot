@@ -12,7 +12,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -50,6 +50,19 @@ module.exports = grammar({
       seq("'", /[^']*/, "'")
     )),
     attribute_value_unquoted: (_) => token(/[^\s}'"]+/),
+
+    // AIDEV-NOTE: Headings use # markers (1-6) followed by inline content
+    // Can span multiple lines, optionally prefixed with matching # markers
+    heading: ($) =>
+      seq(
+        $.heading_marker,
+        repeat1(seq($._inline, "\n")),
+        choice("\n", $._close_paragraph)
+      ),
+    heading_marker: (_) => token(seq(
+      repeat1("#"),
+      /[ \t]+/
+    )),
 
     // A div contains other blocks.
     div: ($) =>

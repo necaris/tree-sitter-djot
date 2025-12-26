@@ -13,6 +13,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "heading"
+        },
+        {
+          "type": "SYMBOL",
           "name": "div"
         },
         {
@@ -194,6 +198,63 @@
       "content": {
         "type": "PATTERN",
         "value": "[^\\s}'\"]+"
+      }
+    },
+    "heading": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "heading_marker"
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_inline"
+              },
+              {
+                "type": "STRING",
+                "value": "\n"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\n"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_close_paragraph"
+            }
+          ]
+        }
+      ]
+    },
+    "heading_marker": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "REPEAT1",
+            "content": {
+              "type": "STRING",
+              "value": "#"
+            }
+          },
+          {
+            "type": "PATTERN",
+            "value": "[ \\t]+"
+          }
+        ]
       }
     },
     "div": {

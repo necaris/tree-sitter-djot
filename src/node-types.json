@@ -112,6 +112,10 @@
           "named": true
         },
         {
+          "type": "heading",
+          "named": true
+        },
+        {
           "type": "paragraph",
           "named": true
         }
@@ -135,6 +139,10 @@
           "named": true
         },
         {
+          "type": "heading",
+          "named": true
+        },
+        {
           "type": "paragraph",
           "named": true
         }
@@ -155,6 +163,25 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "heading",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "heading_marker",
           "named": true
         }
       ]
@@ -213,6 +240,10 @@
   },
   {
     "type": "div_marker",
+    "named": true
+  },
+  {
+    "type": "heading_marker",
     "named": true
   },
   {
