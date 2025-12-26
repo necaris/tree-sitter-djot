@@ -19,7 +19,7 @@ module.exports = grammar({
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
     // raw_block before code_block to try matching =format first
-    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.raw_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.footnote, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.raw_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -83,6 +83,19 @@ module.exports = grammar({
       ),
       "\n"
     ))),
+
+    // AIDEV-NOTE: Footnotes use [^label]: content syntax with block content
+    // Content can be multiple blocks indented under the footnote marker
+    footnote: ($) => seq(
+      "[^",
+      $.footnote_label,
+      "]:",
+      optional(/[ \t]+/),
+      optional($._inline),
+      "\n"
+    ),
+    
+    footnote_label: (_) => /[^\]\n]+/,
 
     // AIDEV-NOTE: Reference definitions: [label]: url
     // URL can span multiple lines, attributes transfer to links using this reference
@@ -287,11 +300,11 @@ module.exports = grammar({
 
     // AIDEV-NOTE: Footnote references use [^label] syntax
     // Must come before images/links to match the [^ pattern
-    footnote_reference: (_) => token(seq(
+    footnote_reference: (_) => seq(
       "[^",
       /[^\]\n]+/,
       "]"
-    )),
+    ),
 
     // AIDEV-NOTE: Images use ! prefix before link syntax: ![alt](url) or ![alt][ref]
     image: ($) => seq(

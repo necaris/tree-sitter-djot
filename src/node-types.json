@@ -76,6 +76,10 @@
           "named": true
         },
         {
+          "type": "footnote",
+          "named": true
+        },
+        {
           "type": "heading",
           "named": true
         },
@@ -250,6 +254,10 @@
           "named": true
         },
         {
+          "type": "footnote",
+          "named": true
+        },
+        {
           "type": "heading",
           "named": true
         },
@@ -298,6 +306,10 @@
         },
         {
           "type": "div",
+          "named": true
+        },
+        {
+          "type": "footnote",
           "named": true
         },
         {
@@ -413,6 +425,99 @@
         }
       ]
     }
+  },
+  {
+    "type": "footnote",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "delete",
+          "named": true
+        },
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_label",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
+          "type": "highlight",
+          "named": true
+        },
+        {
+          "type": "image",
+          "named": true
+        },
+        {
+          "type": "insert",
+          "named": true
+        },
+        {
+          "type": "line_break",
+          "named": true
+        },
+        {
+          "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "span",
+          "named": true
+        },
+        {
+          "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "subscript",
+          "named": true
+        },
+        {
+          "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "footnote_label",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "footnote_reference",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "heading",
@@ -1028,6 +1133,11 @@
     }
   },
   {
+    "type": "reference_label",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "span",
     "named": true,
     "fields": {},
@@ -1375,6 +1485,10 @@
     "named": false
   },
   {
+    "type": "[^",
+    "named": false
+  },
+  {
     "type": "\\",
     "named": false
   },
@@ -1420,10 +1534,6 @@
   },
   {
     "type": "div_marker",
-    "named": true
-  },
-  {
-    "type": "footnote_reference",
     "named": true
   },
   {
@@ -1480,10 +1590,6 @@
   },
   {
     "type": "reference_destination",
-    "named": true
-  },
-  {
-    "type": "reference_label",
     "named": true
   },
   {

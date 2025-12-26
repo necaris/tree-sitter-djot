@@ -25,6 +25,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "footnote"
+        },
+        {
+          "type": "SYMBOL",
           "name": "reference_definition"
         },
         {
@@ -321,6 +325,55 @@
           ]
         }
       }
+    },
+    "footnote": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "[^"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "footnote_label"
+        },
+        {
+          "type": "STRING",
+          "value": "]:"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "[ \\t]+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_inline"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "\n"
+        }
+      ]
+    },
+    "footnote_label": {
+      "type": "PATTERN",
+      "value": "[^\\]\\n]+"
     },
     "reference_definition": {
       "type": "PREC",
@@ -1286,24 +1339,21 @@
       }
     },
     "footnote_reference": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "[^"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[^\\]\\n]+"
-          },
-          {
-            "type": "STRING",
-            "value": "]"
-          }
-        ]
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "[^"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\]\\n]+"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "image": {
       "type": "SEQ",
