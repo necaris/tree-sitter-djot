@@ -114,7 +114,21 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    _inline: ($) => repeat1(choice($.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths
+    // Content is literal (no escapes), single space stripped if content starts/ends with backtick
+    // For simplicity, we support 1-4 backtick delimiters explicitly
+    verbatim: (_) => token(choice(
+      // Single backtick
+      seq("`", /[^`\n]+/, "`"),
+      // Double backtick
+      seq("``", /[^`\n]([^`\n]|`[^`])*/, "``"),
+      // Triple backtick
+      seq("```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```"),
+      // Quad backtick
+      seq("````", /[^`\n]([^`\n]|`[^`]|``[^`]|```[^`])*/, "````")
+    )),
+    
     emphasis: ($) => prec.left(seq("_", $._inline, "_", optional($.attributes))),
     strong_emphasis: ($) => prec.left(seq("*", $._inline, "*", optional($.attributes))),
     // prec.dynamic() is used during conflict resolution to choose which

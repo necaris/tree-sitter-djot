@@ -207,6 +207,10 @@
         {
           "type": "strong_emphasis",
           "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
         }
       ]
     }
@@ -230,6 +234,10 @@
         {
           "type": "strong_emphasis",
           "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
         }
       ]
     }
@@ -248,6 +256,10 @@
         },
         {
           "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "verbatim",
           "named": true
         }
       ]
@@ -271,6 +283,10 @@
         },
         {
           "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "verbatim",
           "named": true
         }
       ]
@@ -326,6 +342,10 @@
   },
   {
     "type": "language",
+    "named": true
+  },
+  {
+    "type": "verbatim",
     "named": true
   },
   {

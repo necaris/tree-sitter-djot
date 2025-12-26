@@ -465,6 +465,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "verbatim"
+          },
+          {
+            "type": "SYMBOL",
             "name": "strong_emphasis"
           },
           {
@@ -482,6 +486,82 @@
           {
             "type": "SYMBOL",
             "name": "_fallback_star"
+          }
+        ]
+      }
+    },
+    "verbatim": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "`"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]+"
+              },
+              {
+                "type": "STRING",
+                "value": "`"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "``"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "``"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "```"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`]|``[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "```"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "````"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`]|``[^`]|```[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "````"
+              }
+            ]
           }
         ]
       }
