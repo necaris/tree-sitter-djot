@@ -127,7 +127,37 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    _inline: ($) => repeat1(choice($.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    // AIDEV-NOTE: Links support both inline [text](url) and reference [text][ref] syntax
+    // Link text can contain inline formatting
+    link: ($) => seq(
+      "[",
+      alias(repeat1($._link_text_content), $.link_text),
+      "]",
+      choice(
+        // Inline link: (url)
+        seq(
+          token.immediate("("),
+          alias(/[^\n)]+/, $.link_destination),
+          ")"
+        ),
+        // Reference link: [ref] or [] (empty uses text as ref)
+        seq(
+          token.immediate("["),
+          optional(alias(/[^\n\]]+/, $.link_label)),
+          "]"
+        )
+      ),
+      optional($.attributes)
+    ),
+    
+    _link_text_content: ($) => choice(
+      $.verbatim,
+      $.strong_emphasis,
+      $.emphasis,
+      /[^\]\n]/
+    ),
+
     // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths
     // Content is literal (no escapes), single space stripped if content starts/ends with backtick
     // For simplicity, we support 1-4 backtick delimiters explicitly
