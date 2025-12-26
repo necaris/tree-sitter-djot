@@ -191,6 +191,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -380,6 +384,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -459,6 +467,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -535,6 +547,10 @@
         },
         {
           "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
           "named": true
         },
         {
@@ -646,6 +662,10 @@
         },
         {
           "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
           "named": true
         },
         {
@@ -802,6 +822,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -881,6 +905,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -952,6 +980,25 @@
         },
         {
           "type": "raw_format",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "raw_inline",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "raw_inline_format",
+          "named": true
+        },
+        {
+          "type": "raw_inline_marker",
           "named": true
         }
       ]
@@ -1083,6 +1130,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1162,6 +1213,10 @@
           "named": true
         },
         {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1238,6 +1293,10 @@
         },
         {
           "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
           "named": true
         },
         {
@@ -1409,6 +1468,14 @@
   },
   {
     "type": "raw_format",
+    "named": true
+  },
+  {
+    "type": "raw_inline_format",
+    "named": true
+  },
+  {
+    "type": "raw_inline_marker",
     "named": true
   },
   {

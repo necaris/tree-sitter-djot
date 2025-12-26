@@ -236,7 +236,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
@@ -380,6 +380,23 @@ module.exports = grammar({
       seq("$`", /[^`\n]+/, "`"),
       seq("$``", /[^`\n]([^`\n]|`[^`])*/, "``"),
       seq("$```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```")
+    )),
+
+    // AIDEV-NOTE: Raw inline uses backtick content followed by {=format}
+    // Content is passed through without processing for the specified format
+    raw_inline: ($) => seq(
+      $.raw_inline_marker,
+      token.immediate("{"),
+      optional(/[ \t]*/),
+      "=",
+      alias(/[^\s}]+/, $.raw_inline_format),
+      optional(/[ \t]*/),
+      "}"
+    ),
+    raw_inline_marker: (_) => token(choice(
+      seq("`", /[^`\n]+/, "`"),
+      seq("``", /[^`\n]([^`\n]|`[^`])*/, "``"),
+      seq("```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```")
     )),
 
     // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths
