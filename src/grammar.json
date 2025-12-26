@@ -1085,6 +1085,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "symbol"
+          },
+          {
+            "type": "SYMBOL",
             "name": "image"
           },
           {
@@ -1134,6 +1138,10 @@
           {
             "type": "SYMBOL",
             "name": "_fallback_tilde"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_fallback_exclamation"
           }
         ]
       }
@@ -1249,6 +1257,26 @@
           {
             "type": "STRING",
             "value": ">"
+          }
+        ]
+      }
+    },
+    "symbol": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": ":"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[a-zA-Z0-9_+-]+"
+          },
+          {
+            "type": "STRING",
+            "value": ":"
           }
         ]
       }
@@ -1933,6 +1961,14 @@
         "value": "~"
       }
     },
+    "_fallback_exclamation": {
+      "type": "PREC_DYNAMIC",
+      "value": -100,
+      "content": {
+        "type": "STRING",
+        "value": "!"
+      }
+    },
     "_text": {
       "type": "PATTERN",
       "value": "[^\\n]"
@@ -1960,6 +1996,10 @@
     [
       "subscript",
       "_fallback_tilde"
+    ],
+    [
+      "image",
+      "_fallback_exclamation"
     ]
   ],
   "precedences": [],

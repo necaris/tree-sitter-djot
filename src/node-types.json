@@ -207,6 +207,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "verbatim",
           "named": true
         }
@@ -392,6 +396,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "verbatim",
           "named": true
         }
@@ -467,6 +475,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "verbatim",
           "named": true
         }
@@ -539,6 +551,10 @@
         },
         {
           "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {
@@ -646,6 +662,10 @@
         },
         {
           "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {
@@ -798,6 +818,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "task_list_marker",
           "named": true
         },
@@ -870,6 +894,10 @@
         },
         {
           "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {
@@ -1071,6 +1099,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "verbatim",
           "named": true
         }
@@ -1146,6 +1178,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "verbatim",
           "named": true
         }
@@ -1218,6 +1254,10 @@
         },
         {
           "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {
@@ -1377,6 +1417,10 @@
   },
   {
     "type": "reference_label",
+    "named": true
+  },
+  {
+    "type": "symbol",
     "named": true
   },
   {

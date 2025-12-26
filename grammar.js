@@ -10,7 +10,8 @@ module.exports = grammar({
     [$.emphasis, $._fallback],
     [$.strong_emphasis, $._fallback_star],
     [$.superscript, $._fallback_caret],
-    [$.subscript, $._fallback_tilde]
+    [$.subscript, $._fallback_tilde],
+    [$.image, $._fallback_exclamation]
   ],
 
   rules: {
@@ -235,7 +236,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.footnote_reference, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
@@ -274,6 +275,14 @@ module.exports = grammar({
       "<",
       /[^<>\n]+/,
       ">"
+    )),
+
+    // AIDEV-NOTE: Symbols use :name: syntax (like emoji shortcodes)
+    // Names can contain letters, numbers, underscores, hyphens, and plus signs
+    symbol: (_) => token(seq(
+      ":",
+      /[a-zA-Z0-9_+-]+/,
+      ":"
     )),
 
     // AIDEV-NOTE: Footnote references use [^label] syntax
@@ -400,6 +409,7 @@ module.exports = grammar({
     _fallback_star: (_) => prec.dynamic(-100, "*"),
     _fallback_caret: (_) => prec.dynamic(-100, "^"),
     _fallback_tilde: (_) => prec.dynamic(-100, "~"),
+    _fallback_exclamation: (_) => prec.dynamic(-100, "!"),
     _text: (_) => /[^\n]/,
   },
 
