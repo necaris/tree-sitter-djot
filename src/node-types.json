@@ -92,6 +92,10 @@
           "named": true
         },
         {
+          "type": "raw_block",
+          "named": true
+        },
+        {
           "type": "reference_definition",
           "named": true
         },
@@ -242,6 +246,10 @@
           "named": true
         },
         {
+          "type": "raw_block",
+          "named": true
+        },
+        {
           "type": "reference_definition",
           "named": true
         },
@@ -286,6 +294,10 @@
         },
         {
           "type": "pipe_table",
+          "named": true
+        },
+        {
+          "type": "raw_block",
           "named": true
         },
         {
@@ -807,6 +819,33 @@
     }
   },
   {
+    "type": "raw_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "code",
+          "named": true
+        },
+        {
+          "type": "code_block_marker",
+          "named": true
+        },
+        {
+          "type": "raw_format",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "reference_definition",
     "named": true,
     "fields": {},
@@ -1148,6 +1187,10 @@
   },
   {
     "type": "pipe_table_row",
+    "named": true
+  },
+  {
+    "type": "raw_format",
     "named": true
   },
   {

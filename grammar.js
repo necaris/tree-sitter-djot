@@ -17,7 +17,8 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.paragraph, "\n"),
+    // raw_block before code_block to try matching =format first
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.raw_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -199,11 +200,25 @@ module.exports = grammar({
         )
       ),
 
-    // Code blocks may have a language specifier.
+    // AIDEV-NOTE: Raw blocks use ``` =format syntax (space before =) for raw content passthrough
+    // Code blocks may have a language specifier
+    // Both share the same structure but differ in format/language marker
+    raw_block: ($) =>
+      seq(
+        $.code_block_marker,
+        $.raw_format,
+        optional(/[ \t]+/),
+        optional($.attributes),
+        "\n",
+        optional($.code),
+        $.code_block_marker
+      ),
+    raw_format: (_) => token(seq(/[ \t]+/, "=", /[^\s{]+/)),
+
     code_block: ($) =>
       seq(
         $.code_block_marker,
-        optional($.language),
+        optional(seq($.language, optional(/[ \t]+/))),
         optional($.attributes),
         "\n",
         optional($.code),
