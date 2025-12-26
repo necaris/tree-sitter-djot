@@ -218,7 +218,16 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    _inline: ($) => repeat1(choice($.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    // AIDEV-NOTE: Highlighted text uses {=text=} syntax
+    // Curly braces are mandatory
+    highlight: ($) => seq(
+      "{=",
+      $._inline,
+      "=}",
+      optional($.attributes)
+    ),
+
     // AIDEV-NOTE: Autolinks use <url> or <email> syntax
     // Content is literal (no escapes), no newlines allowed
     autolink: (_) => token(seq(

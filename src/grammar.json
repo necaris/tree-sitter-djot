@@ -961,6 +961,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "highlight"
+          },
+          {
+            "type": "SYMBOL",
             "name": "autolink"
           },
           {
@@ -997,6 +1001,35 @@
           }
         ]
       }
+    },
+    "highlight": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{="
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_inline"
+        },
+        {
+          "type": "STRING",
+          "value": "=}"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attributes"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "autolink": {
       "type": "TOKEN",
