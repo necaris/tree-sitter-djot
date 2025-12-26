@@ -6,7 +6,10 @@ module.exports = grammar({
   // has significant spaces in some places, so let's remove them here too.
   extras: (_) => ["\r"],
 
-  conflicts: ($) => [[$.emphasis, $._fallback]],
+  conflicts: ($) => [
+    [$.emphasis, $._fallback],
+    [$.strong_emphasis, $._fallback_star]
+  ],
 
   rules: {
     document: ($) => repeat($._block),
@@ -111,11 +114,13 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.emphasis, $._text, $._fallback)),
+    _inline: ($) => repeat1(choice($.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
     emphasis: ($) => prec.left(seq("_", $._inline, "_", optional($.attributes))),
+    strong_emphasis: ($) => prec.left(seq("*", $._inline, "*", optional($.attributes))),
     // prec.dynamic() is used during conflict resolution to choose which
     // branch to choose if multiple succeed.
     _fallback: (_) => prec.dynamic(-100, "_"),
+    _fallback_star: (_) => prec.dynamic(-100, "*"),
     _text: (_) => /[^\n]/,
   },
 

@@ -465,6 +465,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "strong_emphasis"
+          },
+          {
+            "type": "SYMBOL",
             "name": "emphasis"
           },
           {
@@ -474,6 +478,10 @@
           {
             "type": "SYMBOL",
             "name": "_fallback"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_fallback_star"
           }
         ]
       }
@@ -511,12 +519,53 @@
         ]
       }
     },
+    "strong_emphasis": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "*"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline"
+          },
+          {
+            "type": "STRING",
+            "value": "*"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attributes"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "_fallback": {
       "type": "PREC_DYNAMIC",
       "value": -100,
       "content": {
         "type": "STRING",
         "value": "_"
+      }
+    },
+    "_fallback_star": {
+      "type": "PREC_DYNAMIC",
+      "value": -100,
+      "content": {
+        "type": "STRING",
+        "value": "*"
       }
     },
     "_text": {
@@ -534,6 +583,10 @@
     [
       "emphasis",
       "_fallback"
+    ],
+    [
+      "strong_emphasis",
+      "_fallback_star"
     ]
   ],
   "precedences": [],
