@@ -254,7 +254,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.escape, $.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
+    _inline: ($) => repeat1(choice($.escape, $.line_break, $.smart_ellipsis, $.smart_em_dash, $.smart_en_dash, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
     
     // AIDEV-NOTE: Backslash escapes for ASCII punctuation
     // Escape prevents special character interpretation
@@ -264,6 +264,15 @@ module.exports = grammar({
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
     line_break: (_) => prec(1, "\\"),
+    
+    // AIDEV-NOTE: Smart punctuation for typographic symbols
+    // These convert ASCII sequences to their typographic equivalents
+    // Note: Quote directionality (open/close) would require context-aware parsing
+    // For now, we just match the patterns without smart conversion
+    smart_ellipsis: (_) => "...",
+    smart_em_dash: (_) => "---",
+    smart_en_dash: (_) => "--",
+    
     // AIDEV-NOTE: Insert and delete use {+text+} and {-text-} syntax
     // Curly braces are mandatory
     insert: ($) => seq(

@@ -207,6 +207,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -412,6 +424,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -501,6 +525,18 @@
         },
         {
           "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
           "named": true
         },
         {
@@ -601,6 +637,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -685,6 +733,18 @@
         },
         {
           "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
           "named": true
         },
         {
@@ -804,6 +864,18 @@
         },
         {
           "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
           "named": true
         },
         {
@@ -968,6 +1040,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1052,6 +1136,18 @@
         },
         {
           "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
           "named": true
         },
         {
@@ -1274,6 +1370,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1361,6 +1469,18 @@
           "named": true
         },
         {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1445,6 +1565,18 @@
         },
         {
           "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
           "named": true
         },
         {
@@ -1628,6 +1760,18 @@
   },
   {
     "type": "reference_destination",
+    "named": true
+  },
+  {
+    "type": "smart_ellipsis",
+    "named": true
+  },
+  {
+    "type": "smart_em_dash",
+    "named": true
+  },
+  {
+    "type": "smart_en_dash",
     "named": true
   },
   {

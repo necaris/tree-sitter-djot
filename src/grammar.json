@@ -1142,6 +1142,18 @@
           },
           {
             "type": "SYMBOL",
+            "name": "smart_ellipsis"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "smart_em_dash"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "smart_en_dash"
+          },
+          {
+            "type": "SYMBOL",
             "name": "insert"
           },
           {
@@ -1258,6 +1270,18 @@
         "type": "STRING",
         "value": "\\"
       }
+    },
+    "smart_ellipsis": {
+      "type": "STRING",
+      "value": "..."
+    },
+    "smart_em_dash": {
+      "type": "STRING",
+      "value": "---"
+    },
+    "smart_en_dash": {
+      "type": "STRING",
+      "value": "--"
     },
     "insert": {
       "type": "SEQ",
