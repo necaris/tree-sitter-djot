@@ -25,6 +25,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "reference_definition"
+        },
+        {
+          "type": "SYMBOL",
           "name": "div"
         },
         {
@@ -305,6 +309,85 @@
           ]
         }
       }
+    },
+    "reference_definition": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "attributes"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "["
+          },
+          {
+            "type": "SYMBOL",
+            "name": "reference_label"
+          },
+          {
+            "type": "STRING",
+            "value": "]:"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[ \\t]+"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "[^\\n]+"
+                },
+                "named": true,
+                "value": "reference_destination"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          },
+          {
+            "type": "STRING",
+            "value": "\n"
+          }
+        ]
+      }
+    },
+    "reference_label": {
+      "type": "PATTERN",
+      "value": "[^\\]\\n]+"
     },
     "block_quote": {
       "type": "PREC_LEFT",

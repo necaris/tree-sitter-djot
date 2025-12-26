@@ -15,7 +15,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -79,6 +79,20 @@ module.exports = grammar({
       ),
       "\n"
     ))),
+
+    // AIDEV-NOTE: Reference definitions: [label]: url
+    // URL can span multiple lines, attributes transfer to links using this reference
+    reference_definition: ($) => prec(1, seq(
+      optional(seq($.attributes, "\n")),
+      "[",
+      $.reference_label,
+      "]:",
+      optional(/[ \t]+/),
+      optional(alias(/[^\n]+/, $.reference_destination)),
+      "\n"
+    )),
+    
+    reference_label: (_) => /[^\]\n]+/,
 
     // AIDEV-NOTE: Block quotes use > markers with optional space
     // Supports nested blocks and lazy continuation (omitting > on continuation lines)

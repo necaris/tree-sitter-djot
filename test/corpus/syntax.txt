@@ -319,6 +319,56 @@ quote with lazy continuation
     (paragraph)))
 
 ===============================================================================
+Reference definition: Simple
+===============================================================================
+[ref]: http://example.com
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (reference_definition
+    (reference_label)
+    (reference_destination)))
+
+===============================================================================
+Reference definition: With attributes
+===============================================================================
+{title="Example"}
+[ref]: http://example.com
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (reference_definition
+    (attributes
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_quoted)))
+    (reference_label)
+    (reference_destination)))
+
+===============================================================================
+Reference definition: Used by link
+===============================================================================
+[ref]: http://example.com
+
+See [this link][ref] here
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (reference_definition
+    (reference_label)
+    (reference_destination))
+  (paragraph
+    (link
+      (link_text)
+      (link_label))))
+
+===============================================================================
 Code block
 ===============================================================================
 ```gleam
