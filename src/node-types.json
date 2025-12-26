@@ -183,6 +183,10 @@
           "named": true
         },
         {
+          "type": "span",
+          "named": true
+        },
+        {
           "type": "strong_emphasis",
           "named": true
         },
@@ -356,6 +360,10 @@
           "named": true
         },
         {
+          "type": "span",
+          "named": true
+        },
+        {
           "type": "strong_emphasis",
           "named": true
         },
@@ -419,6 +427,10 @@
           "named": true
         },
         {
+          "type": "span",
+          "named": true
+        },
+        {
           "type": "strong_emphasis",
           "named": true
         },
@@ -479,6 +491,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "span",
           "named": true
         },
         {
@@ -574,6 +590,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "span",
           "named": true
         },
         {
@@ -714,6 +734,10 @@
           "named": true
         },
         {
+          "type": "span",
+          "named": true
+        },
+        {
           "type": "strong_emphasis",
           "named": true
         },
@@ -774,6 +798,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "span",
           "named": true
         },
         {
@@ -869,6 +897,56 @@
     }
   },
   {
+    "type": "span",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_class",
+          "named": true
+        },
+        {
+          "type": "attribute_id",
+          "named": true
+        },
+        {
+          "type": "attribute_key_value",
+          "named": true
+        },
+        {
+          "type": "span_text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "span_text",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "strong_emphasis",
     "named": true,
     "fields": {},
@@ -910,6 +988,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "span",
           "named": true
         },
         {
@@ -976,6 +1058,10 @@
           "named": true
         },
         {
+          "type": "span",
+          "named": true
+        },
+        {
           "type": "strong_emphasis",
           "named": true
         },
@@ -1036,6 +1122,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "span",
           "named": true
         },
         {

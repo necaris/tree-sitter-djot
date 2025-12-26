@@ -235,7 +235,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.span, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
@@ -327,6 +327,28 @@ module.exports = grammar({
       $.strong_emphasis,
       $.emphasis,
       /[^\]\n]/
+    ),
+
+    // AIDEV-NOTE: Spans use [text]{attributes} for generic inline containers
+    // Similar to links but with required attributes instead of destination
+    // Use token.immediate to ensure { follows ] without space
+    span: ($) => seq(
+      "[",
+      alias(repeat1($._link_text_content), $.span_text),
+      "]",
+      token.immediate("{"),
+      optional(/\s+/),
+      repeat(
+        seq(
+          choice(
+            $.attribute_id,
+            $.attribute_class,
+            $.attribute_key_value
+          ),
+          optional(/\s+/)
+        )
+      ),
+      "}"
     ),
 
     // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths

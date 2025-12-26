@@ -1558,4 +1558,84 @@ Raw blocks: Empty
     (raw_format)
     (code_block_marker)))
 
+===============================================================================
+Spans: With class
+===============================================================================
+This is [special text]{.highlight}.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (span
+      (span_text)
+      (attribute_class))))
+
+===============================================================================
+Spans: With ID and class
+===============================================================================
+The [main section]{#intro .section} starts here.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (span
+      (span_text)
+      (attribute_id)
+      (attribute_class))))
+
+===============================================================================
+Spans: With key-value attributes
+===============================================================================
+A [custom element]{lang=en dir=ltr}.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (span
+      (span_text)
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_unquoted))
+      (attribute_key_value
+        (attribute_key)
+        (attribute_value_unquoted)))))
+
+===============================================================================
+Spans: With inline formatting
+===============================================================================
+This is [_emphasized_ and *strong*]{.note}.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (span
+      (span_text
+        (emphasis)
+        (strong_emphasis))
+      (attribute_class))))
+
+===============================================================================
+Spans: Multiple spans
+===============================================================================
+First [span]{.a} and [second]{.b} here.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (span
+      (span_text)
+      (attribute_class))
+    (span
+      (span_text)
+      (attribute_class))))
 
