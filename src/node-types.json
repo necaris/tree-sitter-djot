@@ -249,6 +249,10 @@
           "named": true
         },
         {
+          "type": "autolink",
+          "named": true
+        },
+        {
           "type": "emphasis",
           "named": true
         },
@@ -279,6 +283,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "autolink",
+          "named": true
+        },
         {
           "type": "emphasis",
           "named": true
@@ -412,6 +420,10 @@
       "required": true,
       "types": [
         {
+          "type": "autolink",
+          "named": true
+        },
+        {
           "type": "bullet_list_marker",
           "named": true
         },
@@ -454,6 +466,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "autolink",
+          "named": true
+        },
         {
           "type": "emphasis",
           "named": true
@@ -533,6 +549,10 @@
       "types": [
         {
           "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "autolink",
           "named": true
         },
         {
@@ -635,6 +655,10 @@
   },
   {
     "type": "attribute_value_unquoted",
+    "named": true
+  },
+  {
+    "type": "autolink",
     "named": true
   },
   {

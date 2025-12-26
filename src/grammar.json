@@ -961,6 +961,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "autolink"
+          },
+          {
+            "type": "SYMBOL",
             "name": "image"
           },
           {
@@ -990,6 +994,26 @@
           {
             "type": "SYMBOL",
             "name": "_fallback_star"
+          }
+        ]
+      }
+    },
+    "autolink": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "<"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^<>\\n]+"
+          },
+          {
+            "type": "STRING",
+            "value": ">"
           }
         ]
       }
