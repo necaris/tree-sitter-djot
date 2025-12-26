@@ -235,7 +235,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.span, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
@@ -350,6 +350,20 @@ module.exports = grammar({
       ),
       "}"
     ),
+
+    // AIDEV-NOTE: Math uses $ or $$ prefix with backticks for inline/display math
+    // $`x = 1` for inline, $$`x = 1` for display
+    // Content is literal (no escapes), supports variable backtick lengths
+    math: (_) => token(choice(
+      // Display math ($$)
+      seq("$$`", /[^`\n]+/, "`"),
+      seq("$$``", /[^`\n]([^`\n]|`[^`])*/, "``"),
+      seq("$$```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```"),
+      // Inline math ($)
+      seq("$`", /[^`\n]+/, "`"),
+      seq("$``", /[^`\n]([^`\n]|`[^`])*/, "``"),
+      seq("$```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```")
+    )),
 
     // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths
     // Content is literal (no escapes), single space stripped if content starts/ends with backtick

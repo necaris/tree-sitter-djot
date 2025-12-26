@@ -183,6 +183,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -360,6 +364,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -427,6 +435,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -491,6 +503,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
           "named": true
         },
         {
@@ -590,6 +606,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
           "named": true
         },
         {
@@ -730,6 +750,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "ordered_list_marker",
           "named": true
         },
@@ -798,6 +822,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
           "named": true
         },
         {
@@ -991,6 +1019,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1058,6 +1090,10 @@
           "named": true
         },
         {
+          "type": "math",
+          "named": true
+        },
+        {
           "type": "span",
           "named": true
         },
@@ -1122,6 +1158,10 @@
         },
         {
           "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
           "named": true
         },
         {
@@ -1265,6 +1305,10 @@
   },
   {
     "type": "link_label",
+    "named": true
+  },
+  {
+    "type": "math",
     "named": true
   },
   {

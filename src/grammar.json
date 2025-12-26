@@ -1097,6 +1097,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "math"
+          },
+          {
+            "type": "SYMBOL",
             "name": "verbatim"
           },
           {
@@ -1554,6 +1558,116 @@
           "value": "}"
         }
       ]
+    },
+    "math": {
+      "type": "TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$$`"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]+"
+              },
+              {
+                "type": "STRING",
+                "value": "`"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$$``"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "``"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$$```"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`]|``[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "```"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$`"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]+"
+              },
+              {
+                "type": "STRING",
+                "value": "`"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$``"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "``"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "$```"
+              },
+              {
+                "type": "PATTERN",
+                "value": "[^`\\n]([^`\\n]|`[^`]|``[^`])*"
+              },
+              {
+                "type": "STRING",
+                "value": "```"
+              }
+            ]
+          }
+        ]
+      }
     },
     "verbatim": {
       "type": "TOKEN",
