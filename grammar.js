@@ -15,7 +15,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.reference_definition, $.list, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -93,6 +93,43 @@ module.exports = grammar({
     )),
     
     reference_label: (_) => /[^\]\n]+/,
+
+    // AIDEV-NOTE: Lists support bullet (-, +, *), ordered (1., a., i.), definition (:), and task lists
+    // For simplicity, starting with basic bullet and ordered lists with single-line items
+    list: ($) => prec.left(seq(
+      repeat1($.list_item),
+      "\n"
+    )),
+    
+    list_item: ($) => prec.left(seq(
+      choice(
+        $.bullet_list_marker,
+        $.ordered_list_marker,
+        $.task_list_marker
+      ),
+      $._inline,
+      "\n"
+    )),
+    
+    bullet_list_marker: (_) => token(seq(
+      choice("-", "+", "*"),
+      /[ \t]+/
+    )),
+    
+    ordered_list_marker: (_) => token(seq(
+      /[0-9]+/,
+      choice(".", ")"),
+      /[ \t]+/
+    )),
+    
+    task_list_marker: (_) => token(seq(
+      "-",
+      /[ \t]+/,
+      "[",
+      choice(" ", "X", "x"),
+      "]",
+      /[ \t]+/
+    )),
 
     // AIDEV-NOTE: Block quotes use > markers with optional space
     // Supports nested blocks and lazy continuation (omitting > on continuation lines)

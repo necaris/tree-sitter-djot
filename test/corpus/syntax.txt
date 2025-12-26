@@ -319,6 +319,101 @@ quote with lazy continuation
     (paragraph)))
 
 ===============================================================================
+List: Bullet simple
+===============================================================================
+- Item one
+- Item two
+- Item three
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (list
+    (list_item
+      (bullet_list_marker))
+    (list_item
+      (bullet_list_marker))
+    (list_item
+      (bullet_list_marker))))
+
+===============================================================================
+List: Ordered
+===============================================================================
+1. First item
+2. Second item
+3. Third item
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (list
+    (list_item
+      (ordered_list_marker))
+    (list_item
+      (ordered_list_marker))
+    (list_item
+      (ordered_list_marker))))
+
+===============================================================================
+List: Task list
+===============================================================================
+- [ ] Unchecked task
+- [x] Checked task
+- [X] Also checked
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (list
+    (list_item
+      (task_list_marker))
+    (list_item
+      (task_list_marker))
+    (list_item
+      (task_list_marker))))
+
+===============================================================================
+List: With inline formatting
+===============================================================================
+- Item with *strong* emphasis
+- Item with _regular_ emphasis
+- Item with `code`
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (list
+    (list_item
+      (bullet_list_marker)
+      (strong_emphasis))
+    (list_item
+      (bullet_list_marker)
+      (emphasis))
+    (list_item
+      (bullet_list_marker)
+      (verbatim))))
+
+===============================================================================
+List: Mixed bullet markers
+===============================================================================
++ Plus item
+* Star item
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (list
+    (list_item
+      (bullet_list_marker))
+    (list_item
+      (bullet_list_marker))))
+
+===============================================================================
 Reference definition: Simple
 ===============================================================================
 [ref]: http://example.com

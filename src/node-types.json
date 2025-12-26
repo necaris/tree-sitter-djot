@@ -80,6 +80,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "paragraph",
           "named": true
         },
@@ -159,6 +163,10 @@
           "named": true
         },
         {
+          "type": "list",
+          "named": true
+        },
+        {
           "type": "paragraph",
           "named": true
         },
@@ -195,6 +203,10 @@
         },
         {
           "type": "heading",
+          "named": true
+        },
+        {
+          "type": "list",
           "named": true
         },
         {
@@ -365,6 +377,64 @@
     }
   },
   {
+    "type": "list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "list_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bullet_list_marker",
+          "named": true
+        },
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "image",
+          "named": true
+        },
+        {
+          "type": "link",
+          "named": true
+        },
+        {
+          "type": "ordered_list_marker",
+          "named": true
+        },
+        {
+          "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "task_list_marker",
+          "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "paragraph",
     "named": true,
     "fields": {},
@@ -514,6 +584,10 @@
     "named": true
   },
   {
+    "type": "bullet_list_marker",
+    "named": true
+  },
+  {
     "type": "code_block_marker",
     "named": true
   },
@@ -546,11 +620,19 @@
     "named": true
   },
   {
+    "type": "ordered_list_marker",
+    "named": true
+  },
+  {
     "type": "reference_destination",
     "named": true
   },
   {
     "type": "reference_label",
+    "named": true
+  },
+  {
+    "type": "task_list_marker",
     "named": true
   },
   {
