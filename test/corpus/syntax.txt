@@ -1820,9 +1820,7 @@ Use `<span>`{=html} for inline HTML.
 
 (document
   (paragraph
-    (raw_inline
-      (raw_inline_marker)
-      (raw_inline_format))))
+    (raw_inline)))
 
 ===============================================================================
 Raw inline: LaTeX
@@ -1834,9 +1832,7 @@ Math: `\alpha`{=latex} symbol.
 
 (document
   (paragraph
-    (raw_inline
-      (raw_inline_marker)
-      (raw_inline_format))))
+    (raw_inline)))
 
 ===============================================================================
 Raw inline: Double backticks
@@ -1848,9 +1844,7 @@ Code: ``x = `1` ``{=html} with backtick.
 
 (document
   (paragraph
-    (raw_inline
-      (raw_inline_marker)
-      (raw_inline_format))))
+    (raw_inline)))
 
 ===============================================================================
 Raw inline: Multiple
@@ -1862,12 +1856,8 @@ Both `<b>`{=html} and `\beta`{=latex} work.
 
 (document
   (paragraph
-    (raw_inline
-      (raw_inline_marker)
-      (raw_inline_format))
-    (raw_inline
-      (raw_inline_marker)
-      (raw_inline_format))))
+    (raw_inline)
+    (raw_inline)))
 
 ===============================================================================
 Footnotes: Simple

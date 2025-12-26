@@ -1091,25 +1091,6 @@
     }
   },
   {
-    "type": "raw_inline",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "raw_inline_format",
-          "named": true
-        },
-        {
-          "type": "raw_inline_marker",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "reference_definition",
     "named": true,
     "fields": {},
@@ -1581,11 +1562,7 @@
     "named": true
   },
   {
-    "type": "raw_inline_format",
-    "named": true
-  },
-  {
-    "type": "raw_inline_marker",
+    "type": "raw_inline",
     "named": true
   },
   {

@@ -1776,117 +1776,89 @@
       }
     },
     "raw_inline": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "raw_inline_marker"
-        },
-        {
-          "type": "IMMEDIATE_TOKEN",
-          "content": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "`"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[^`\\n]+"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "`"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "``"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[^`\\n]([^`\\n]|`[^`])*"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "``"
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "```"
+                  },
+                  {
+                    "type": "PATTERN",
+                    "value": "[^`\\n]([^`\\n]|`[^`]|``[^`])*"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "```"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "type": "STRING",
             "value": "{"
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[ \\t]*"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "ALIAS",
-          "content": {
+          },
+          {
+            "type": "PATTERN",
+            "value": "[ \\t]*"
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
             "type": "PATTERN",
             "value": "[^\\s}]+"
           },
-          "named": true,
-          "value": "raw_inline_format"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[ \\t]*"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "}"
-        }
-      ]
-    },
-    "raw_inline_marker": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "`"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^`\\n]+"
-              },
-              {
-                "type": "STRING",
-                "value": "`"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "[ \\t]*"
           },
           {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "``"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^`\\n]([^`\\n]|`[^`])*"
-              },
-              {
-                "type": "STRING",
-                "value": "``"
-              }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "```"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^`\\n]([^`\\n]|`[^`]|``[^`])*"
-              },
-              {
-                "type": "STRING",
-                "value": "```"
-              }
-            ]
+            "type": "STRING",
+            "value": "}"
           }
         ]
       }

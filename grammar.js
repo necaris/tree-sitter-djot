@@ -397,19 +397,19 @@ module.exports = grammar({
 
     // AIDEV-NOTE: Raw inline uses backtick content followed by {=format}
     // Content is passed through without processing for the specified format
-    raw_inline: ($) => seq(
-      $.raw_inline_marker,
-      token.immediate("{"),
-      optional(/[ \t]*/),
+    // Must use token for entire pattern to avoid conflict with verbatim
+    raw_inline: (_) => token(seq(
+      choice(
+        seq("`", /[^`\n]+/, "`"),
+        seq("``", /[^`\n]([^`\n]|`[^`])*/, "``"),
+        seq("```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```")
+      ),
+      "{",
+      /[ \t]*/,
       "=",
-      alias(/[^\s}]+/, $.raw_inline_format),
-      optional(/[ \t]*/),
+      /[^\s}]+/,
+      /[ \t]*/,
       "}"
-    ),
-    raw_inline_marker: (_) => token(choice(
-      seq("`", /[^`\n]+/, "`"),
-      seq("``", /[^`\n]([^`\n]|`[^`])*/, "``"),
-      seq("```", /[^`\n]([^`\n]|`[^`]|``[^`])*/, "```")
     )),
 
     // AIDEV-NOTE: Verbatim/code spans use backticks with variable lengths
