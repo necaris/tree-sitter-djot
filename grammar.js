@@ -8,7 +8,9 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$.emphasis, $._fallback],
-    [$.strong_emphasis, $._fallback_star]
+    [$.strong_emphasis, $._fallback_star],
+    [$.superscript, $._fallback_caret],
+    [$.subscript, $._fallback_tilde]
   ],
 
   rules: {
@@ -164,12 +166,12 @@ module.exports = grammar({
       "\n"
     ))),
     
-    table_caption: ($) => seq(
+    table_caption: (_) => token(seq(
       "^",
       /[ \t]+/,
-      alias(/[^\n]+/, $.caption_text),
+      /[^\n]+/,
       "\n"
-    ),
+    )),
 
     // AIDEV-NOTE: Block quotes use > markers with optional space
     // Supports nested blocks and lazy continuation (omitting > on continuation lines)
@@ -218,7 +220,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    _inline: ($) => repeat1(choice($.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
     // AIDEV-NOTE: Highlighted text uses {=text=} syntax
     // Curly braces are mandatory
     highlight: ($) => seq(
@@ -305,10 +307,17 @@ module.exports = grammar({
     
     emphasis: ($) => prec.left(seq("_", $._inline, "_", optional($.attributes))),
     strong_emphasis: ($) => prec.left(seq("*", $._inline, "*", optional($.attributes))),
+    
+    // AIDEV-NOTE: Superscript and subscript use ^ and ~ delimiters
+    superscript: ($) => prec.left(seq("^", $._inline, "^", optional($.attributes))),
+    subscript: ($) => prec.left(seq("~", $._inline, "~", optional($.attributes))),
+    
     // prec.dynamic() is used during conflict resolution to choose which
     // branch to choose if multiple succeed.
     _fallback: (_) => prec.dynamic(-100, "_"),
     _fallback_star: (_) => prec.dynamic(-100, "*"),
+    _fallback_caret: (_) => prec.dynamic(-100, "^"),
+    _fallback_tilde: (_) => prec.dynamic(-100, "~"),
     _text: (_) => /[^\n]/,
   },
 

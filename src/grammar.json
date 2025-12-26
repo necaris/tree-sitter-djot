@@ -732,30 +732,28 @@
       }
     },
     "table_caption": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "^"
-        },
-        {
-          "type": "PATTERN",
-          "value": "[ \\t]+"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "^"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[ \\t]+"
+          },
+          {
             "type": "PATTERN",
             "value": "[^\\n]+"
           },
-          "named": true,
-          "value": "caption_text"
-        },
-        {
-          "type": "STRING",
-          "value": "\n"
-        }
-      ]
+          {
+            "type": "STRING",
+            "value": "\n"
+          }
+        ]
+      }
     },
     "block_quote": {
       "type": "PREC_LEFT",
@@ -961,6 +959,14 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "subscript"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "superscript"
+          },
+          {
+            "type": "SYMBOL",
             "name": "highlight"
           },
           {
@@ -998,6 +1004,14 @@
           {
             "type": "SYMBOL",
             "name": "_fallback_star"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_fallback_caret"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_fallback_tilde"
           }
         ]
       }
@@ -1418,6 +1432,72 @@
         ]
       }
     },
+    "superscript": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "^"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline"
+          },
+          {
+            "type": "STRING",
+            "value": "^"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attributes"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "subscript": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "~"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline"
+          },
+          {
+            "type": "STRING",
+            "value": "~"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attributes"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "_fallback": {
       "type": "PREC_DYNAMIC",
       "value": -100,
@@ -1432,6 +1512,22 @@
       "content": {
         "type": "STRING",
         "value": "*"
+      }
+    },
+    "_fallback_caret": {
+      "type": "PREC_DYNAMIC",
+      "value": -100,
+      "content": {
+        "type": "STRING",
+        "value": "^"
+      }
+    },
+    "_fallback_tilde": {
+      "type": "PREC_DYNAMIC",
+      "value": -100,
+      "content": {
+        "type": "STRING",
+        "value": "~"
       }
     },
     "_text": {
@@ -1453,6 +1549,14 @@
     [
       "strong_emphasis",
       "_fallback_star"
+    ],
+    [
+      "superscript",
+      "_fallback_caret"
+    ],
+    [
+      "subscript",
+      "_fallback_tilde"
     ]
   ],
   "precedences": [],
