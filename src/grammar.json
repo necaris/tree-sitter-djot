@@ -17,6 +17,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "block_quote"
+        },
+        {
+          "type": "SYMBOL",
           "name": "div"
         },
         {
@@ -253,6 +257,30 @@
           {
             "type": "PATTERN",
             "value": "[ \\t]+"
+          }
+        ]
+      }
+    },
+    "block_quote": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_block_quote_begin"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_block"
+            }
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_block_close"
           }
         ]
       }
@@ -525,6 +553,10 @@
     {
       "type": "SYMBOL",
       "name": "_div_marker_end"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_block_quote_begin"
     },
     {
       "type": "SYMBOL",

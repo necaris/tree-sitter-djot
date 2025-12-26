@@ -12,7 +12,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -64,6 +64,17 @@ module.exports = grammar({
       /[ \t]+/
     )),
 
+    // AIDEV-NOTE: Block quotes use > markers with optional space
+    // Supports nested blocks and lazy continuation (omitting > on continuation lines)
+    block_quote: ($) =>
+      prec.left(
+        seq(
+          $._block_quote_begin,
+          repeat($._block),
+          $._block_close
+        )
+      ),
+
     // A div contains other blocks.
     div: ($) =>
       prec.left(
@@ -113,6 +124,7 @@ module.exports = grammar({
     $._block_close,
     $._div_marker_begin,
     $._div_marker_end,
+    $._block_quote_begin,
 
     // This is used in the scanner internally,
     // but shouldn't be used by the grammar.

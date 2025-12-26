@@ -7,10 +7,11 @@ typedef enum {
   BLOCK_CLOSE,
   DIV_MARKER_BEGIN,
   DIV_MARKER_END,
+  BLOCK_QUOTE_BEGIN,
   IGNORED
 } TokenType;
 
-typedef enum { DIV } BlockType;
+typedef enum { DIV, BLOCK_QUOTE } BlockType;
 
 typedef struct {
   BlockType type;
@@ -155,6 +156,28 @@ static bool parse_div(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
   }
 }
 
+static bool parse_block_quote(Scanner *s, TSLexer *lexer, const bool *valid_symbols) {
+  if (!valid_symbols[BLOCK_QUOTE_BEGIN]) {
+    return false;
+  }
+  
+  if (lexer->lookahead != '>') {
+    return false;
+  }
+  
+  lexer->advance(lexer, false);
+  
+  // Optional space or tab after >
+  if (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
+    lexer->advance(lexer, false);
+  }
+  
+  lexer->mark_end(lexer);
+  push_block(s, BLOCK_QUOTE, 1);
+  lexer->result_symbol = BLOCK_QUOTE_BEGIN;
+  return true;
+}
+
 bool tree_sitter_sdjot_external_scanner_scan(void *payload, TSLexer *lexer,
                                              const bool *valid_symbols) {
   Scanner *s = (Scanner *)payload;
@@ -176,6 +199,10 @@ bool tree_sitter_sdjot_external_scanner_scan(void *payload, TSLexer *lexer,
   }
 
   if (parse_div(s, lexer, valid_symbols)) {
+    return true;
+  }
+
+  if (parse_block_quote(s, lexer, valid_symbols)) {
     return true;
   }
 
