@@ -171,6 +171,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -372,6 +376,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -431,6 +439,11 @@
     }
   },
   {
+    "type": "escape",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "footnote",
     "named": true,
     "fields": {},
@@ -448,6 +461,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
           "named": true
         },
         {
@@ -544,6 +561,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -628,6 +649,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
           "named": true
         },
         {
@@ -743,6 +768,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
           "named": true
         },
         {
@@ -899,6 +928,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -983,6 +1016,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
           "named": true
         },
         {
@@ -1201,6 +1238,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -1284,6 +1325,10 @@
           "named": true
         },
         {
+          "type": "escape",
+          "named": true
+        },
+        {
           "type": "footnote_reference",
           "named": true
         },
@@ -1364,6 +1409,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
           "named": true
         },
         {

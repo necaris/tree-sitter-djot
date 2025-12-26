@@ -254,13 +254,15 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
+    _inline: ($) => repeat1(choice($.escape, $.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
+    
+    // AIDEV-NOTE: Backslash escapes for ASCII punctuation
+    // Escape prevents special character interpretation
+    // Higher precedence than line_break to match \<char> before \<newline>
+    escape: (_) => prec(2, token(seq("\\", /[^\n]/))),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
-    // Note: This will match ANY backslash with high precedence. Proper implementation
-    // should distinguish between line breaks (\<newline>) and escapes (\<char>)
-    // For now, accepting simplified behavior - escapes will be handled in task tree-sitter-djot-564.27
     line_break: (_) => prec(1, "\\"),
     // AIDEV-NOTE: Insert and delete use {+text+} and {-text-} syntax
     // Curly braces are mandatory
