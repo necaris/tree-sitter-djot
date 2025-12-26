@@ -51,6 +51,10 @@
         {
           "type": "attribute_key_value",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
         }
       ]
     }
@@ -1139,6 +1143,10 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "span_text",
           "named": true
         }
@@ -1511,6 +1519,10 @@
   },
   {
     "type": "code_block_marker",
+    "named": true
+  },
+  {
+    "type": "comment",
     "named": true
   },
   {

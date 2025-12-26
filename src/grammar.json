@@ -99,6 +99,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "attribute_key_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "comment"
                   }
                 ]
               },
@@ -132,7 +136,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^\\s}]+"
+          "value": "[^\\s}%]+"
         }
       ]
     },
@@ -145,7 +149,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^\\s}]+"
+          "value": "[^\\s}%]+"
         }
       ]
     },
@@ -226,6 +230,26 @@
       "content": {
         "type": "PATTERN",
         "value": "[^\\s}'\"]+"
+      }
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "%"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^%]*"
+          },
+          {
+            "type": "STRING",
+            "value": "%"
+          }
+        ]
       }
     },
     "heading": {
@@ -1641,6 +1665,10 @@
                   {
                     "type": "SYMBOL",
                     "name": "attribute_key_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "comment"
                   }
                 ]
               },

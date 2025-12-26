@@ -21,8 +21,9 @@ module.exports = grammar({
     // raw_block before code_block to try matching =format first
     _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.footnote, $.reference_definition, $.pipe_table, $.list, $.div, $.code_block, $.raw_block, $.paragraph, "\n"),
 
-    // AIDEV-NOTE: Attributes system {#id .class key=value}
+    // AIDEV-NOTE: Attributes system {#id .class key=value % comment %}
     // Can be applied to both block and inline elements
+    // Comments use % delimiters within attributes
     attributes: ($) =>
       seq(
         "{",
@@ -32,7 +33,8 @@ module.exports = grammar({
             choice(
               $.attribute_id,
               $.attribute_class,
-              $.attribute_key_value
+              $.attribute_key_value,
+              $.comment
             ),
             optional(/\s+/)
           )
@@ -40,8 +42,8 @@ module.exports = grammar({
         "}"
       ),
 
-    attribute_id: (_) => seq("#", /[^\s}]+/),
-    attribute_class: (_) => seq(".", /[^\s}]+/),
+    attribute_id: (_) => seq("#", /[^\s}%]+/),
+    attribute_class: (_) => seq(".", /[^\s}%]+/),
     attribute_key_value: ($) =>
       seq(
         $.attribute_key,
@@ -57,6 +59,9 @@ module.exports = grammar({
       seq("'", /[^']*/, "'")
     )),
     attribute_value_unquoted: (_) => token(/[^\s}'"]+/),
+    
+    // AIDEV-NOTE: Comments in attributes use % delimiters
+    comment: (_) => token(seq("%", /[^%]*/, "%")),
 
     // AIDEV-NOTE: Headings use # markers (1-6) followed by inline content
     // Can span multiple lines, optionally prefixed with matching # markers
@@ -373,7 +378,8 @@ module.exports = grammar({
           choice(
             $.attribute_id,
             $.attribute_class,
-            $.attribute_key_value
+            $.attribute_key_value,
+            $.comment
           ),
           optional(/\s+/)
         )
