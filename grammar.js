@@ -254,7 +254,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.escape, $.line_break, $.smart_ellipsis, $.smart_em_dash, $.smart_en_dash, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
+    _inline: ($) => repeat1(choice($.escape, $.line_break, $.smart_ellipsis, $.smart_em_dash, $.smart_en_dash, $.forced_emphasis_open, $.forced_emphasis_close, $.forced_strong_open, $.forced_strong_close, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.symbol, $.image, $.footnote_reference, $.link, $.span, $.raw_inline, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde, $._fallback_exclamation)),
     
     // AIDEV-NOTE: Backslash escapes for ASCII punctuation
     // Escape prevents special character interpretation
@@ -272,6 +272,14 @@ module.exports = grammar({
     smart_ellipsis: (_) => "...",
     smart_em_dash: (_) => "---",
     smart_en_dash: (_) => "--",
+    
+    // AIDEV-NOTE: Forced delimiters use curly braces to explicitly mark openers/closers
+    // {_ forces emphasis opener, _} forces emphasis closer
+    // {* forces strong opener, *} forces strong closer
+    forced_emphasis_open: (_) => "{_",
+    forced_emphasis_close: (_) => "_}",
+    forced_strong_open: (_) => "{*",
+    forced_strong_close: (_) => "*}",
     
     // AIDEV-NOTE: Insert and delete use {+text+} and {-text-} syntax
     // Curly braces are mandatory
