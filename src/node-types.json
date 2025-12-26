@@ -163,6 +163,10 @@
           "named": true
         },
         {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
           "type": "highlight",
           "named": true
         },
@@ -344,6 +348,10 @@
           "named": true
         },
         {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
           "type": "highlight",
           "named": true
         },
@@ -408,6 +416,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
           "named": true
         },
         {
@@ -483,6 +495,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
           "named": true
         },
         {
@@ -586,6 +602,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
           "named": true
         },
         {
@@ -730,6 +750,10 @@
           "named": true
         },
         {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
           "type": "highlight",
           "named": true
         },
@@ -802,6 +826,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
           "named": true
         },
         {
@@ -999,6 +1027,10 @@
           "named": true
         },
         {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
           "type": "highlight",
           "named": true
         },
@@ -1070,6 +1102,10 @@
           "named": true
         },
         {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
           "type": "highlight",
           "named": true
         },
@@ -1138,6 +1174,10 @@
         },
         {
           "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
           "named": true
         },
         {
@@ -1281,6 +1321,10 @@
   },
   {
     "type": "div_marker",
+    "named": true
+  },
+  {
+    "type": "footnote_reference",
     "named": true
   },
   {

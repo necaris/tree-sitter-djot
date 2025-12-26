@@ -1089,6 +1089,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "footnote_reference"
+          },
+          {
+            "type": "SYMBOL",
             "name": "link"
           },
           {
@@ -1245,6 +1249,26 @@
           {
             "type": "STRING",
             "value": ">"
+          }
+        ]
+      }
+    },
+    "footnote_reference": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "[^"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[^\\]\\n]+"
+          },
+          {
+            "type": "STRING",
+            "value": "]"
           }
         ]
       }

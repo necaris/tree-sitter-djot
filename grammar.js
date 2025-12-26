@@ -235,7 +235,7 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.footnote_reference, $.link, $.span, $.math, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
     
     // AIDEV-NOTE: Hard line breaks use backslash before newline
     // The backslash is the line break marker, newline is consumed by paragraph structure
@@ -274,6 +274,14 @@ module.exports = grammar({
       "<",
       /[^<>\n]+/,
       ">"
+    )),
+
+    // AIDEV-NOTE: Footnote references use [^label] syntax
+    // Must come before images/links to match the [^ pattern
+    footnote_reference: (_) => token(seq(
+      "[^",
+      /[^\]\n]+/,
+      "]"
     )),
 
     // AIDEV-NOTE: Images use ! prefix before link syntax: ![alt](url) or ![alt][ref]
