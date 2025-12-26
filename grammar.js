@@ -127,7 +127,30 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    _inline: ($) => repeat1(choice($.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star)),
+    // AIDEV-NOTE: Images use ! prefix before link syntax: ![alt](url) or ![alt][ref]
+    image: ($) => seq(
+      "!",
+      "[",
+      alias(repeat1(/[^\]\n]/), $.image_description),
+      "]",
+      choice(
+        // Inline image: (url)
+        seq(
+          token.immediate("("),
+          alias(/[^\n)]+/, $.image_source),
+          ")"
+        ),
+        // Reference image: [ref] or [] (empty uses alt as ref)
+        seq(
+          token.immediate("["),
+          optional(alias(/[^\n\]]+/, $.image_reference)),
+          "]"
+        )
+      ),
+      optional($.attributes)
+    ),
+
     // AIDEV-NOTE: Links support both inline [text](url) and reference [text][ref] syntax
     // Link text can contain inline formatting
     link: ($) => seq(

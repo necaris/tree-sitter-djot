@@ -217,6 +217,10 @@
           "named": true
         },
         {
+          "type": "image",
+          "named": true
+        },
+        {
           "type": "link",
           "named": true
         },
@@ -248,6 +252,10 @@
           "named": true
         },
         {
+          "type": "image",
+          "named": true
+        },
+        {
           "type": "link",
           "named": true
         },
@@ -261,6 +269,38 @@
         }
       ]
     }
+  },
+  {
+    "type": "image",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "image_description",
+          "named": true
+        },
+        {
+          "type": "image_reference",
+          "named": true
+        },
+        {
+          "type": "image_source",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "image_description",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "link",
@@ -325,6 +365,10 @@
           "named": true
         },
         {
+          "type": "image",
+          "named": true
+        },
+        {
           "type": "link",
           "named": true
         },
@@ -356,6 +400,10 @@
           "named": true
         },
         {
+          "type": "image",
+          "named": true
+        },
+        {
           "type": "link",
           "named": true
         },
@@ -372,6 +420,10 @@
   },
   {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": "!",
     "named": false
   },
   {
@@ -432,6 +484,14 @@
   },
   {
     "type": "heading_marker",
+    "named": true
+  },
+  {
+    "type": "image_reference",
+    "named": true
+  },
+  {
+    "type": "image_source",
     "named": true
   },
   {
