@@ -1425,10 +1425,68 @@ Final paragraph
     (paragraph)
     (div_marker))
   (paragraph)
-  (code_block
-    (code_block_marker)
-    (language)
-    (code)
-    (code_block_marker))
+    (code_block
+      (code_block_marker)
+      (language)
+      (code)
+      (code_block_marker))
   (paragraph))
+
+===============================================================================
+Line breaks: Basic hard line break
+===============================================================================
+This line has a hard break\
+and continues here.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (line_break)))
+
+===============================================================================
+Line breaks: Multiple line breaks in paragraph
+===============================================================================
+First line\
+Second line\
+Third line.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (line_break)
+    (line_break)))
+
+===============================================================================
+Line breaks: With inline formatting
+===============================================================================
+This has _emphasis_\
+and *strong* text\
+across breaks.
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (emphasis)
+    (line_break)
+    (strong_emphasis)
+    (line_break)))
+
+===============================================================================
+Line breaks: At end of paragraph
+===============================================================================
+Single line paragraph\
+
+
+-------------------------------------------------------------------------------
+
+(document
+  (paragraph
+    (line_break)))
+
 

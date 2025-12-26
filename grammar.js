@@ -220,7 +220,14 @@ module.exports = grammar({
 
     // The markup parser could separate block and inline parsing into separate steps,
     // but we'll do everything in one parser.
-    _inline: ($) => repeat1(choice($.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    _inline: ($) => repeat1(choice($.line_break, $.insert, $.delete, $.subscript, $.superscript, $.highlight, $.autolink, $.image, $.link, $.verbatim, $.strong_emphasis, $.emphasis, $._text, $._fallback, $._fallback_star, $._fallback_caret, $._fallback_tilde)),
+    
+    // AIDEV-NOTE: Hard line breaks use backslash before newline
+    // The backslash is the line break marker, newline is consumed by paragraph structure
+    // Note: This will match ANY backslash with high precedence. Proper implementation
+    // should distinguish between line breaks (\<newline>) and escapes (\<char>)
+    // For now, accepting simplified behavior - escapes will be handled in task tree-sitter-djot-564.27
+    line_break: (_) => prec(1, "\\"),
     // AIDEV-NOTE: Insert and delete use {+text+} and {-text-} syntax
     // Curly braces are mandatory
     insert: ($) => seq(

@@ -959,6 +959,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "line_break"
+          },
+          {
+            "type": "SYMBOL",
             "name": "insert"
           },
           {
@@ -1022,6 +1026,14 @@
             "name": "_fallback_tilde"
           }
         ]
+      }
+    },
+    "line_break": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "STRING",
+        "value": "\\"
       }
     },
     "insert": {
