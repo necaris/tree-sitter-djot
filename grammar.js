@@ -15,7 +15,7 @@ module.exports = grammar({
     document: ($) => repeat($._block),
 
     // All blocks should end with a newline, but we can also parse multiple newlines.
-    _block: ($) => choice($.heading, $.block_quote, $.div, $.code_block, $.paragraph, "\n"),
+    _block: ($) => choice($.heading, $.block_quote, $.thematic_break, $.div, $.code_block, $.paragraph, "\n"),
 
     // AIDEV-NOTE: Attributes system {#id .class key=value}
     // Can be applied to both block and inline elements
@@ -66,6 +66,19 @@ module.exports = grammar({
       repeat1("#"),
       /[ \t]+/
     )),
+
+    // AIDEV-NOTE: Thematic breaks are 3+ * or - characters with optional spaces/tabs
+    // Can be indented, no other content allowed on the line
+    thematic_break: (_) => token(prec(2, seq(
+      optional(/[ \t]*/),
+      choice(
+        // Allow any combination of * and spaces/tabs, but must have at least 3 stars
+        /\*[ \t]*\*[ \t]*\*[ \t*]*/,
+        // Same for dashes
+        /-[ \t]*-[ \t]*-[ \t-]*/
+      ),
+      "\n"
+    ))),
 
     // AIDEV-NOTE: Block quotes use > markers with optional space
     // Supports nested blocks and lazy continuation (omitting > on continuation lines)

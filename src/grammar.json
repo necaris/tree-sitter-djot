@@ -21,6 +21,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "thematic_break"
+        },
+        {
+          "type": "SYMBOL",
           "name": "div"
         },
         {
@@ -259,6 +263,47 @@
             "value": "[ \\t]+"
           }
         ]
+      }
+    },
+    "thematic_break": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "[ \\t]*"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "PATTERN",
+                  "value": "\\*[ \\t]*\\*[ \\t]*\\*[ \\t*]*"
+                },
+                {
+                  "type": "PATTERN",
+                  "value": "-[ \\t]*-[ \\t]*-[ \\t-]*"
+                }
+              ]
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
+        }
       }
     },
     "block_quote": {

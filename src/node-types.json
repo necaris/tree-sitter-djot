@@ -82,6 +82,10 @@
         {
           "type": "paragraph",
           "named": true
+        },
+        {
+          "type": "thematic_break",
+          "named": true
         }
       ]
     }
@@ -153,6 +157,10 @@
         {
           "type": "paragraph",
           "named": true
+        },
+        {
+          "type": "thematic_break",
+          "named": true
         }
       ]
     }
@@ -183,6 +191,10 @@
         },
         {
           "type": "paragraph",
+          "named": true
+        },
+        {
+          "type": "thematic_break",
           "named": true
         }
       ]
@@ -342,6 +354,10 @@
   },
   {
     "type": "language",
+    "named": true
+  },
+  {
+    "type": "thematic_break",
     "named": true
   },
   {
