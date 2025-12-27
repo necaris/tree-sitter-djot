@@ -18,3 +18,8 @@ test-*.txt
 *.swo
 *~
 .DS_Store
+*.a
+*.o
+*.so
+*.dylib
+*.pc
