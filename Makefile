@@ -1,6 +1,6 @@
 VERSION := 0.0.1
 
-LANGUAGE_NAME := tree-sitter-sdjot
+LANGUAGE_NAME := tree-sitter-djot
 
 # repository
 SRC_DIR := src

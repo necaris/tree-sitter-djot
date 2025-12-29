@@ -1,42 +1,32 @@
 # Known Issues and Limitations
 
-This document tracks known limitations in the tree-sitter-djot grammar implementation.
-
-## Status
-
-**✅ Grammar is Feature Complete** - All core Djot syntax is implemented with 145 passing tests.
-
-## Outstanding Limitations
-
 ### 1. Smart Curly Quotes Not Implemented
 
 **What works:**
-- ✅ Ellipsis (`...` → …)
-- ✅ Em-dash (`---` → —)
-- ✅ En-dash (`--` → –)
+- Ellipsis (`...` → …)
+- Em-dash (`---` → —)
+- En-dash (`--` → –)
 
 **What doesn't:**
-- ❌ Curly quote conversion (`"text"` → "text")
-- ❌ Apostrophe/single quote distinction
+- Curly quote conversion (`"text"` → "text")
+- Apostrophe/single quote distinction
 
-**Why not fixed:** Requires context-aware state tracking to distinguish opening vs closing quotes based on surrounding whitespace and word boundaries. This is fundamentally difficult in LR parsers and would require significant scanner complexity with limited benefit.
-
-**Workaround:** Use literal typographic quotes (", ", ', ') in source documents.
+**Why not:** Requires context-aware state tracking to distinguish opening vs closing quotes based on surrounding whitespace and word boundaries. This is fundamentally difficult in LR parsers and would require significant scanner complexity with limited benefit.
 
 ---
 
 ### 2. Multi-line List Items with Nested Blocks
 
 **What works:**
-- ✅ Simple single-line list items
-- ✅ Basic continuation on next line
+- Simple single-line list items
+- Basic continuation on next line
 
 **What doesn't:**
-- ❌ Complex nested blocks within list items
-- ❌ Multiple paragraphs in a single list item
-- ❌ Full indentation-based continuation tracking
+- Complex nested blocks within list items
+- Multiple paragraphs in a single list item
+- Full indentation-based continuation tracking
 
-**Why not fixed:** Requires sophisticated indentation tracking and block nesting logic in the external scanner. The complexity-to-benefit ratio is high, and most use cases work with simple list items.
+**Why not:** Requires sophisticated indentation tracking and block nesting logic in the external scanner. The complexity-to-benefit ratio is high, and most use cases work with simple list items.
 
 **Workaround:** Keep list content simple, or use nested lists for structure.
 
@@ -45,13 +35,13 @@ This document tracks known limitations in the tree-sitter-djot grammar implement
 ### 3. Footnote Block Content
 
 **What works:**
-- ✅ Inline content: `[^1]: Simple inline text with *emphasis*.`
+- Inline content: `[^1]: Simple inline text with *emphasis*.`
 
 **What doesn't:**
-- ❌ Multiple block-level elements in footnotes
-- ❌ Indented continuation paragraphs
+- Multiple block-level elements in footnotes
+- Indented continuation paragraphs
 
-**Why not fixed:** Similar to multi-line list items, this requires complex indentation tracking for relatively rare use cases. The grammar prioritizes common patterns.
+**Why not:** Similar to multi-line list items, this requires complex indentation tracking for relatively rare use cases. The grammar prioritizes common patterns.
 
 **Workaround:** Keep footnote content inline, or use regular paragraphs with reference-style organization.
 
@@ -76,24 +66,3 @@ Raw inline (`` `content`{=format} ``) is an atomic token without child nodes.
 **Why:** Prevents parsing conflicts with regular verbatim/code spans. This design choice simplifies the grammar and improves reliability.
 
 **For tool authors:** Treat `(raw_inline)` as atomic; parse format attribute separately if needed.
-
----
-
-## Reporting Issues
-
-Found a bug or unexpected behavior?
-
-1. Check if it's listed above as a known limitation
-2. Create a minimal test case in Djot syntax
-3. Run `tree-sitter parse <file>` to examine the parse tree
-4. File an issue with:
-   - The input Djot source
-   - Expected output
-   - Actual output from tree-sitter
-   - Reference to this document if related to a known limitation
-
-## Performance Notes
-
-- Typical documents (<1000 lines): Excellent performance
-- Large documents (>10,000 lines): May see slower parsing due to external scanner overhead and inline content complexity
-- Recommendation: Split very large documents if performance becomes an issue

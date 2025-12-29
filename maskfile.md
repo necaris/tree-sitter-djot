@@ -20,7 +20,7 @@ npx tree-sitter test
 
 ## build
 
-> Build the parser (compile C code)
+> Build the parser (compile C code) using `make`
 
 ```bash
 make
@@ -31,7 +31,7 @@ make
 > Regenerate parser and run tests
 
 ```bash
-npx tree-sitter generate && npx tree-sitter test
+$MASK generate && $MASK test
 ```
 
 ## parse (file)
@@ -39,10 +39,13 @@ npx tree-sitter generate && npx tree-sitter test
 > Parse a file and display the syntax tree
 
 **OPTIONS**
-* file
-  * flags: -f --file
-  * type: string
-  * desc: Path to file to parse
+
+- file
+  - flags: -f --file
+  - type: string
+  - desc: Path to file to parse
+
+<!-- end list -->
 
 ```bash
 npx tree-sitter parse "$file"
@@ -53,10 +56,13 @@ npx tree-sitter parse "$file"
 > Parse a file with debug output
 
 **OPTIONS**
-* file
-  * flags: -f --file
-  * type: string
-  * desc: Path to file to parse
+
+- file
+  - flags: -f --file
+  - type: string
+  - desc: Path to file to parse
+
+<!-- end list -->
 
 ```bash
 npx tree-sitter parse "$file" --debug
@@ -92,34 +98,4 @@ rm -rf build node_modules
 
 ```bash
 npx tree-sitter build-wasm && npx tree-sitter playground
-```
-
-## bd-ready
-
-> Show ready work items in beads issue tracker
-
-```bash
-bd ready --json
-```
-
-## bd-list
-
-> List all issues
-
-```bash
-bd list --json
-```
-
-## bd-status (issue_id)
-
-> Show status of a specific issue
-
-**OPTIONS**
-* issue_id
-  * flags: -i --issue-id
-  * type: string
-  * desc: Issue ID (e.g., tree-sitter-djot-564.1)
-
-```bash
-bd show "$issue_id" --json
 ```
