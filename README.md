@@ -1,6 +1,6 @@
 # tree-sitter-djot
 
-[![CI](https://github.com/YOUR_USERNAME/tree-sitter-djot/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/tree-sitter-djot/actions/workflows/ci.yml)
+[![CI](https://github.com/necaris/tree-sitter-djot/actions/workflows/ci.yml/badge.svg)](https://github.com/necaris/tree-sitter-djot/actions/workflows/ci.yml)
 
 A comprehensive [Tree-sitter](https://tree-sitter.github.io/) grammar for [Djot](https://djot.net/), a lightweight markup language.
 

@@ -1,4 +1,4 @@
-"Sdjot grammar for tree-sitter"
+"Djot grammar for tree-sitter"
 
 from ._binding import language
 

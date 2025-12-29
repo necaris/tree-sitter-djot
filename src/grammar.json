@@ -1,5 +1,5 @@
 {
-  "name": "sdjot",
+  "name": "djot",
   "rules": {
     "document": {
       "type": "REPEAT",

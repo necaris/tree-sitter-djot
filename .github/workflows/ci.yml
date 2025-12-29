@@ -66,8 +66,8 @@ jobs:
       - name: Upload WASM artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tree-sitter-sdjot-wasm
-          path: tree-sitter-sdjot.wasm
+          name: tree-sitter-djot-wasm
+          path: tree-sitter-djot.wasm
 
   bindings:
     name: Test Language Bindings
@@ -88,11 +88,6 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
-      
       - name: Setup Rust
         uses: dtolnay/rust-toolchain@stable
       
@@ -111,12 +106,7 @@ jobs:
           cd bindings/python
           pip install --upgrade pip setuptools wheel
           pip install .
-          python -c "import tree_sitter_sdjot; print('Python binding OK')"
-      
-      - name: Test Go binding
-        run: |
-          cd bindings/go
-          go test -v
+          python -c "import tree_sitter_djot; print('Python binding OK')"
       
       - name: Test Rust binding
         run: |

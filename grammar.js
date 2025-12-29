@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: "sdjot",
+  name: "djot",
 
   // Skip carriage returns.
   // We could skip spaces here as well, but the actual markup language

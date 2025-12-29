@@ -178,7 +178,7 @@ static bool parse_block_quote(Scanner *s, TSLexer *lexer, const bool *valid_symb
   return true;
 }
 
-bool tree_sitter_sdjot_external_scanner_scan(void *payload, TSLexer *lexer,
+bool tree_sitter_djot_external_scanner_scan(void *payload, TSLexer *lexer,
                                              const bool *valid_symbols) {
   Scanner *s = (Scanner *)payload;
 
@@ -216,14 +216,14 @@ static void init(Scanner *s) {
 }
 
 // If we need to allocate/deallocate state, we do it in these functions.
-void *tree_sitter_sdjot_external_scanner_create() {
+void *tree_sitter_djot_external_scanner_create() {
   Scanner *s = (Scanner *)ts_malloc(sizeof(Scanner));
   s->open_blocks = ts_malloc(sizeof(Array(Block *)));
   init(s);
   return s;
 }
 
-void tree_sitter_sdjot_external_scanner_destroy(void *payload) {
+void tree_sitter_djot_external_scanner_destroy(void *payload) {
   Scanner *s = (Scanner *)payload;
   for (size_t i = 0; i < s->open_blocks->size; ++i) {
     ts_free(array_get(s->open_blocks, i));
@@ -233,7 +233,7 @@ void tree_sitter_sdjot_external_scanner_destroy(void *payload) {
 }
 
 // If we have state, we should load and save it in these functions.
-unsigned tree_sitter_sdjot_external_scanner_serialize(void *payload,
+unsigned tree_sitter_djot_external_scanner_serialize(void *payload,
                                                       char *buffer) {
   Scanner *s = (Scanner *)payload;
   unsigned size = 0;
@@ -250,7 +250,7 @@ unsigned tree_sitter_sdjot_external_scanner_serialize(void *payload,
   return size;
 }
 
-void tree_sitter_sdjot_external_scanner_deserialize(void *payload, char *buffer,
+void tree_sitter_djot_external_scanner_deserialize(void *payload, char *buffer,
                                                     unsigned length) {
   Scanner *s = (Scanner *)payload;
   init(s);

@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-sdjot",
+  "name": "tree-sitter-djot",
   "version": "1.0.0",
   "description": "",
   "main": "bindings/node",
@@ -32,11 +32,11 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.sdjot",
+      "scope": "source.djot",
       "file-types": [
-        "sdj"
+        "dj"
       ],
-      "injection-regex": "sdjot",
+      "injection-regex": "djot",
       "highlights": [
         "queries/highlights.scm"
       ]

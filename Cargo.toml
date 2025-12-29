@@ -1,10 +1,10 @@
 [package]
-name = "tree-sitter-sdjot"
-description = "sdjot grammar for the tree-sitter parsing library"
+name = "tree-sitter-djot"
+description = "djot grammar for the tree-sitter parsing library"
 version = "0.0.1"
-keywords = ["incremental", "parsing", "sdjot"]
+keywords = ["incremental", "parsing", "djot"]
 categories = ["parsing", "text-editors"]
-repository = "https://github.com/tree-sitter/tree-sitter-sdjot"
+repository = "https://github.com/necaris/tree-sitter-djot"
 edition = "2018"
 license = "MIT"
 
