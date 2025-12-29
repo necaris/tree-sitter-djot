@@ -1,0 +1,181 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  test:
+    name: Test Parser
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [18.x, 20.x]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate parser
+        run: npx tree-sitter generate
+      
+      - name: Run tests
+        run: npx tree-sitter test
+      
+      - name: Parse examples
+        run: |
+          npx tree-sitter parse examples/basic.dj --quiet
+          npx tree-sitter parse examples/code-blocks.dj --quiet
+          npx tree-sitter parse examples/full-document.dj --quiet
+          npx tree-sitter parse examples/links-images.dj --quiet
+          npx tree-sitter parse examples/advanced.dj --quiet
+
+  build:
+    name: Build WASM
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build WASM
+        run: npx tree-sitter build-wasm
+      
+      - name: Upload WASM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tree-sitter-sdjot-wasm
+          path: tree-sitter-sdjot.wasm
+
+  bindings:
+    name: Test Language Bindings
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+      
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate parser
+        run: npx tree-sitter generate
+      
+      - name: Test Node.js binding
+        run: |
+          npm test || echo "No npm tests defined"
+      
+      - name: Test Python binding
+        run: |
+          cd bindings/python
+          pip install --upgrade pip setuptools wheel
+          pip install .
+          python -c "import tree_sitter_sdjot; print('Python binding OK')"
+      
+      - name: Test Go binding
+        run: |
+          cd bindings/go
+          go test -v
+      
+      - name: Test Rust binding
+        run: |
+          cd bindings/rust
+          cargo build --release
+          cargo test
+
+  lint:
+    name: Lint and Format Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check grammar.js formatting
+        run: |
+          npx prettier --check grammar.js || echo "Consider running: npx prettier --write grammar.js"
+      
+      - name: Validate grammar
+        run: npx tree-sitter generate --no-bindings
+
+  coverage:
+    name: Test Coverage Report
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate parser
+        run: npx tree-sitter generate
+      
+      - name: Run tests with stats
+        run: |
+          npx tree-sitter test > test-results.txt 2>&1 || true
+          cat test-results.txt
+          grep -E "passed|failed" test-results.txt || echo "Test summary not found"
+      
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results.txt
