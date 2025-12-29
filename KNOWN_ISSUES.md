@@ -1,146 +1,99 @@
 # Known Issues and Limitations
 
-This document tracks known limitations and edge cases in the tree-sitter-djot grammar implementation.
+This document tracks known limitations in the tree-sitter-djot grammar implementation.
 
-## Implementation Status
+## Status
 
 **✅ Grammar is Feature Complete** - All core Djot syntax is implemented with 145 passing tests.
 
-## Known Limitations
+## Outstanding Limitations
 
-### 1. Smart Punctuation - Curly Quotes Not Implemented
-**Status:** Partial Implementation
+### 1. Smart Curly Quotes Not Implemented
 
-The grammar implements:
+**What works:**
 - ✅ Ellipsis (`...` → …)
 - ✅ Em-dash (`---` → —)
 - ✅ En-dash (`--` → –)
 
-Not implemented:
+**What doesn't:**
 - ❌ Curly quote conversion (`"text"` → "text")
-- ❌ Single quote/apostrophe distinction
+- ❌ Apostrophe/single quote distinction
 
-**Reason:** Proper quote conversion requires context-aware parsing to determine opening vs closing quotes based on surrounding whitespace and word boundaries. This level of lexical analysis is complex in tree-sitter's LR parser model.
+**Why not fixed:** Requires context-aware state tracking to distinguish opening vs closing quotes based on surrounding whitespace and word boundaries. This is fundamentally difficult in LR parsers and would require significant scanner complexity with limited benefit.
 
-**Workaround:** Use literal typographic quotes in source documents, or post-process the AST.
+**Workaround:** Use literal typographic quotes (", ", ', ') in source documents.
 
-### 2. Escape Sequences - Visible in AST
-**Status:** By Design
+---
 
-Escape sequences (`\*`, `\_`, etc.) appear as explicit `(escape)` nodes in the AST rather than being "invisible".
+### 2. Multi-line List Items with Nested Blocks
 
-**Reason:** Tree-sitter parsers produce concrete syntax trees. Escapes are significant tokens that affect parsing.
+**What works:**
+- ✅ Simple single-line list items
+- ✅ Basic continuation on next line
 
-**Impact:** Editors and tools consuming the AST should handle `(escape)` nodes appropriately, typically rendering them as the literal escaped character.
+**What doesn't:**
+- ❌ Complex nested blocks within list items
+- ❌ Multiple paragraphs in a single list item
+- ❌ Full indentation-based continuation tracking
 
-### 3. List Items - Multi-line Support Limited
-**Status:** Simplified Implementation
+**Why not fixed:** Requires sophisticated indentation tracking and block nesting logic in the external scanner. The complexity-to-benefit ratio is high, and most use cases work with simple list items.
 
-List items are currently defined as single-line constructs.
+**Workaround:** Keep list content simple, or use nested lists for structure.
 
-**Limitation:** 
-- List items with hard line breaks (`\`) may not parse correctly across lines
-- Indented continuation lines are not fully supported
-- Nested blocks within list items require enhanced grammar
+---
 
-**Workaround:** Keep list item content on single lines, or use simple continuation.
+### 3. Footnote Block Content
 
-### 4. Footnote Content - Inline Only
-**Status:** Simplified Implementation
+**What works:**
+- ✅ Inline content: `[^1]: Simple inline text with *emphasis*.`
 
-Footnotes currently support only inline content on the definition line:
-```djot
-[^1]: Simple inline content only.
-```
+**What doesn't:**
+- ❌ Multiple block-level elements in footnotes
+- ❌ Indented continuation paragraphs
 
-Not supported:
-```djot
-[^1]: First paragraph.
+**Why not fixed:** Similar to multi-line list items, this requires complex indentation tracking for relatively rare use cases. The grammar prioritizes common patterns.
 
-    Second paragraph with indentation.
-```
+**Workaround:** Keep footnote content inline, or use regular paragraphs with reference-style organization.
 
-**Reason:** Full footnote support requires tracking indentation levels and block continuation, similar to list items.
+---
 
-### 5. Raw Inline - Single Token Structure
-**Status:** By Design
+## Design Decisions (Not Bugs)
 
-Raw inline (`` `content`{=format} ``) is represented as a single token with no child nodes, rather than separate marker and format nodes.
+### Escape Sequences Visible in AST
 
-**Reason:** This prevents conflicts with regular verbatim/code spans during lexical analysis.
+Escape sequences (`\*`, `\_`, etc.) appear as explicit `(escape)` nodes rather than being hidden.
 
-**Impact:** Query files and consumers should treat `(raw_inline)` as an atomic node.
+**Why:** Tree-sitter produces concrete syntax trees where all significant tokens are represented. This is correct behavior for a syntax parser.
 
-### 6. Forced Delimiters - Recognition Only
-**Status:** Recognized but Not Enforced
+**For tool authors:** Handle `(escape)` nodes when rendering, typically displaying only the escaped character.
 
-Forced delimiters (`{_`, `_}`, `{*`, `*}`) are recognized as tokens but don't currently affect emphasis/strong matching behavior in the grammar.
+---
 
-**Current Behavior:** They appear in the AST as `forced_*_open/close` nodes but don't force delimiter interpretation.
+### Raw Inline as Single Token
 
-**Future Enhancement:** Would require stateful parsing to track delimiter contexts.
+Raw inline (`` `content`{=format} ``) is an atomic token without child nodes.
 
-## Edge Cases
+**Why:** Prevents parsing conflicts with regular verbatim/code spans. This design choice simplifies the grammar and improves reliability.
 
-### Multiple Inline Emphasis on Same Line
-**Status:** Known Behavior
+**For tool authors:** Treat `(raw_inline)` as atomic; parse format attribute separately if needed.
 
-Multiple emphasis markers on the same line may produce nested structures in some cases due to the recursive nature of `_inline` parsing.
-
-**Example:**
-```djot
-Text with _emphasis one_ and _emphasis two_
-```
-
-May parse differently than:
-```djot
-Text with _emphasis_
-and _another emphasis_
-```
-
-**Impact:** Generally acceptable for syntax highlighting and editing, but may affect precise AST analysis.
-
-## Performance Considerations
-
-### Large Documents
-**Status:** Acceptable Performance
-
-The grammar handles typical Djot documents efficiently. Very large documents (>10,000 lines) may see slower parse times due to:
-- External scanner overhead (block structure tracking)
-- Inline content parsing (many choices in `_inline` rule)
-
-**Recommendation:** Consider splitting very large documents into smaller files.
-
-## Test Coverage
-
-**Status:** 145 Tests, 100% Passing
-
-The test suite covers:
-- ✅ All major Djot features
-- ✅ Common use cases
-- ✅ Basic edge cases
-
-Areas with less coverage:
-- Deeply nested structures (>5 levels)
-- Unicode edge cases in various contexts
-- Performance with extremely large inputs
-
-## Future Enhancements
-
-Potential improvements for future versions:
-1. Context-aware smart quote conversion
-2. Full multi-line list item support with nested blocks
-3. Complete footnote block content support
-4. Stateful forced delimiter handling
-5. Enhanced error recovery for malformed input
-6. Performance optimizations for large documents
+---
 
 ## Reporting Issues
 
-If you encounter issues not listed here:
-1. Create a minimal reproduction example
-2. Check if there's a test case covering the scenario
-3. File an issue with the example and expected vs actual output
-4. Reference this document if related to a known limitation
+Found a bug or unexpected behavior?
 
-Use `npx tree-sitter parse <file>` to examine the parse tree for debugging.
+1. Check if it's listed above as a known limitation
+2. Create a minimal test case in Djot syntax
+3. Run `tree-sitter parse <file>` to examine the parse tree
+4. File an issue with:
+   - The input Djot source
+   - Expected output
+   - Actual output from tree-sitter
+   - Reference to this document if related to a known limitation
+
+## Performance Notes
+
+- Typical documents (<1000 lines): Excellent performance
+- Large documents (>10,000 lines): May see slower parsing due to external scanner overhead and inline content complexity
+- Recommendation: Split very large documents if performance becomes an issue

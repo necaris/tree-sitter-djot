@@ -2118,65 +2118,69 @@ Smart punctuation: Em dash vs en dash
     (smart_en_dash)))
 
 ===============================================================================
-Forced delimiters: Emphasis opener
+Forced delimiters: Emphasis with forced markers
 ===============================================================================
-Text with {_forced opener.
+Text with {_forced emphasis_} here.
 
 
 -------------------------------------------------------------------------------
 
 (document
   (paragraph
-    (forced_emphasis_open)))
+    (forced_emphasis)))
 
 ===============================================================================
-Forced delimiters: Emphasis closer
+Forced delimiters: Strong with forced markers
 ===============================================================================
-forced closer_} here.
+Text with {*forced strong*} here.
 
 
 -------------------------------------------------------------------------------
 
 (document
   (paragraph
-    (forced_emphasis_close)))
+    (forced_strong)))
 
 ===============================================================================
-Forced delimiters: Strong opener
+Forced delimiters: Both in same paragraph
 ===============================================================================
-Text with {*forced strong.
+Here is {_emphasis_} and {*strong*}.
 
 
 -------------------------------------------------------------------------------
 
 (document
   (paragraph
-    (forced_strong_open)))
+    (forced_emphasis)
+    (forced_strong)))
 
 ===============================================================================
-Forced delimiters: Strong closer
+Forced delimiters: With attributes
 ===============================================================================
-forced strong*} here.
+{_emphasis_}{#myid} and {*strong*}{.myclass}
 
 
 -------------------------------------------------------------------------------
 
 (document
   (paragraph
-    (forced_strong_close)))
+    (forced_emphasis
+      (attributes
+        (attribute_id)))
+    (forced_strong
+      (attributes
+        (attribute_class)))))
 
 ===============================================================================
-Forced delimiters: Mixed usage
+Forced delimiters: Nested content
 ===============================================================================
-{_Start with forced_} and {*strong*}.
+{_This has `code` inside_}
 
 
 -------------------------------------------------------------------------------
 
 (document
   (paragraph
-    (forced_emphasis_open)
-    (forced_emphasis_close)
-    (forced_strong_open)
-    (forced_strong_close)))
+    (forced_emphasis
+      (verbatim))))
 

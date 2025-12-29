@@ -1154,19 +1154,11 @@
           },
           {
             "type": "SYMBOL",
-            "name": "forced_emphasis_open"
+            "name": "forced_emphasis"
           },
           {
             "type": "SYMBOL",
-            "name": "forced_emphasis_close"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "forced_strong_open"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "forced_strong_close"
+            "name": "forced_strong"
           },
           {
             "type": "SYMBOL",
@@ -1299,21 +1291,71 @@
       "type": "STRING",
       "value": "--"
     },
-    "forced_emphasis_open": {
-      "type": "STRING",
-      "value": "{_"
+    "forced_emphasis": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "{_"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline"
+          },
+          {
+            "type": "STRING",
+            "value": "_}"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attributes"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
-    "forced_emphasis_close": {
-      "type": "STRING",
-      "value": "_}"
-    },
-    "forced_strong_open": {
-      "type": "STRING",
-      "value": "{*"
-    },
-    "forced_strong_close": {
-      "type": "STRING",
-      "value": "*}"
+    "forced_strong": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "{*"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_inline"
+          },
+          {
+            "type": "STRING",
+            "value": "*}"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "attributes"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
+          }
+        ]
+      }
     },
     "insert": {
       "type": "SEQ",

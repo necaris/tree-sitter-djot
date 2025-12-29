@@ -87,10 +87,8 @@
 (line_break) @constant.builtin
 
 ; Forced delimiters
-(forced_emphasis_open) @punctuation.delimiter
-(forced_emphasis_close) @punctuation.delimiter
-(forced_strong_open) @punctuation.delimiter
-(forced_strong_close) @punctuation.delimiter
+(forced_emphasis) @markup.italic
+(forced_strong) @markup.bold
 
 ; Thematic breaks
 (thematic_break) @punctuation.special

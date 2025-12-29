@@ -179,19 +179,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -412,19 +404,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -532,19 +516,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -625,6 +601,220 @@
     "fields": {}
   },
   {
+    "type": "forced_emphasis",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "delete",
+          "named": true
+        },
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
+          "type": "forced_emphasis",
+          "named": true
+        },
+        {
+          "type": "forced_strong",
+          "named": true
+        },
+        {
+          "type": "highlight",
+          "named": true
+        },
+        {
+          "type": "image",
+          "named": true
+        },
+        {
+          "type": "insert",
+          "named": true
+        },
+        {
+          "type": "line_break",
+          "named": true
+        },
+        {
+          "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
+          "type": "span",
+          "named": true
+        },
+        {
+          "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "subscript",
+          "named": true
+        },
+        {
+          "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "forced_strong",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attributes",
+          "named": true
+        },
+        {
+          "type": "autolink",
+          "named": true
+        },
+        {
+          "type": "delete",
+          "named": true
+        },
+        {
+          "type": "emphasis",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "footnote_reference",
+          "named": true
+        },
+        {
+          "type": "forced_emphasis",
+          "named": true
+        },
+        {
+          "type": "forced_strong",
+          "named": true
+        },
+        {
+          "type": "highlight",
+          "named": true
+        },
+        {
+          "type": "image",
+          "named": true
+        },
+        {
+          "type": "insert",
+          "named": true
+        },
+        {
+          "type": "line_break",
+          "named": true
+        },
+        {
+          "type": "link",
+          "named": true
+        },
+        {
+          "type": "math",
+          "named": true
+        },
+        {
+          "type": "raw_inline",
+          "named": true
+        },
+        {
+          "type": "smart_ellipsis",
+          "named": true
+        },
+        {
+          "type": "smart_em_dash",
+          "named": true
+        },
+        {
+          "type": "smart_en_dash",
+          "named": true
+        },
+        {
+          "type": "span",
+          "named": true
+        },
+        {
+          "type": "strong_emphasis",
+          "named": true
+        },
+        {
+          "type": "subscript",
+          "named": true
+        },
+        {
+          "type": "superscript",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "verbatim",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "heading",
     "named": true,
     "fields": {},
@@ -653,19 +843,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -772,19 +954,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -919,19 +1093,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1104,19 +1270,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1223,19 +1381,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1470,19 +1620,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1585,19 +1727,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1700,19 +1834,11 @@
           "named": true
         },
         {
-          "type": "forced_emphasis_close",
+          "type": "forced_emphasis",
           "named": true
         },
         {
-          "type": "forced_emphasis_open",
-          "named": true
-        },
-        {
-          "type": "forced_strong_close",
-          "named": true
-        },
-        {
-          "type": "forced_strong_open",
+          "type": "forced_strong",
           "named": true
         },
         {
@@ -1807,6 +1933,10 @@
     "named": false
   },
   {
+    "type": "*}",
+    "named": false
+  },
+  {
     "type": "+}",
     "named": false
   },
@@ -1855,6 +1985,10 @@
     "named": false
   },
   {
+    "type": "_}",
+    "named": false
+  },
+  {
     "type": "attribute_key",
     "named": true
   },
@@ -1884,22 +2018,6 @@
   },
   {
     "type": "div_marker",
-    "named": true
-  },
-  {
-    "type": "forced_emphasis_close",
-    "named": true
-  },
-  {
-    "type": "forced_emphasis_open",
-    "named": true
-  },
-  {
-    "type": "forced_strong_close",
-    "named": true
-  },
-  {
-    "type": "forced_strong_open",
     "named": true
   },
   {
@@ -1991,6 +2109,10 @@
     "named": false
   },
   {
+    "type": "{*",
+    "named": false
+  },
+  {
     "type": "{+",
     "named": false
   },
@@ -2000,6 +2122,10 @@
   },
   {
     "type": "{=",
+    "named": false
+  },
+  {
+    "type": "{_",
     "named": false
   },
   {
